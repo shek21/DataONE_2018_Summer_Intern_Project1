@@ -14,7 +14,7 @@ d1c <- D1Client("STAGING", "urn:node:mnTestARCTIC")
 packageId <- uploadDataPackage(d1c, dp, public=TRUE, quiet=FALSE)
 ```
 
-![Caption for the picture.](/home/shek21/Documents/dataone/DataONE_2018_Summer_Intern_Project1/published.png)
-![Caption for the picture.](/home/shek21/Documents/dataone/DataONE_2018_Summer_Intern_Project1/people.png)
-![Caption for the picture.](/home/shek21/Documents/dataone/DataONE_2018_Summer_Intern_Project1/geo.png)
-![Caption for the picture.](/home/shek21/Documents/dataone/DataONE_2018_Summer_Intern_Project1/temp.png)
+![Caption for the picture.](../img/published.png)
+![Caption for the picture.](../img/people.png)
+![Caption for the picture.](../img/geo.png)
+![Caption for the picture.](../img/temp.png)
