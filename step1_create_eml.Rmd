@@ -1,0 +1,55 @@
+---
+title: "Step 1: Create EML"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+* Required libraries
+```{r}
+library("dataone")
+library("datapack")
+library("EML")
+```
+
+* Create baseline metadata file in EML for a data package which will be used to create and publish a data package in DataONE is required. At this point, we generate EML file with minimal required information (later after publishing the data package we have to update EML to connect with source, program scripts, and output objects). 
+```{r}
+geographicDescription <- "Chicago"
+coverage <- set_coverage(
+            begin='2018-06-06', end='2018-06-06', 
+            geographicDescription=geographicDescription, 
+            west=-87.623177, east=-87.623177, 
+            north=41.881832, south=41.881832)
+person <- as.person("Seokki Lee <slee195@hawk.iit.edu> [cre]")
+slee <- as(person, "creator")
+contact <- new("contact", 
+               individualName = slee@individualName, 
+               electronicMail = slee@electronicMailAddress, 
+               organizationName = "IIT", 
+               phone="000-000-0000")
+pubDate <- "2018-06-06"
+title <- "test from WT to DataONE"
+abstract <- "test abs"
+```
+
+Create a EML file in xml (e.g., test.xml) using those fields above
+```{r}
+dataset <- new("dataset", 
+               title=title, 
+               creator=slee, 
+               pubDate=pubDate, 
+               abstract=abstract, 
+               coverage=coverage, 
+               contact=contact)
+eml <- new("eml", system="uuid", dataset=dataset)
+write_eml(eml, "test.xml")
+```
+
+We have to check whether the metadata has been correctly generated
+```{r}
+eml_validate("test.xml")
+```
+
+
