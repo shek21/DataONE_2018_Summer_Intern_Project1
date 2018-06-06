@@ -1,0 +1,20 @@
+---
+title: "Step 3: add provenance"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+* Add provenance information (e.g., which output is derived from which inputs using which program) into the package we have created.
+```{r}
+sourceObjId <- selectMember(dp, name="sysmeta@fileName", value="test_child2_object")
+programObjId <- selectMember(dp, name="sysmeta@formatId", value="application/R")
+outputObjId <- selectMember(dp, name="sysmeta@fileName", value="test_child2_copied_object")
+```
+
+Create a relationship among those objects as provenance
+```{r}
+dp <- describeWorkflow(dp, sources=sourceObjId, program=programObjId, derivations=outputObjId)
+```
