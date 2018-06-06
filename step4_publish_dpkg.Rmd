@@ -1,0 +1,20 @@
+---
+title: "Step 4: publish data package"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+* Publish the package with provenance information we have created to DataONE member node. 
+Note that this step requires to get the authorization of the member node (e.g., register Arctic Data Center through Orcid provide the authentication token which needs this publication).
+```{r}
+d1c <- D1Client("STAGING", "urn:node:mnTestARCTIC")
+packageId <- uploadDataPackage(d1c, dp, public=TRUE, quiet=FALSE)
+```
+
+![Caption for the picture.](/home/shek21/Documents/dataone/DataONE_2018_Summer_Intern_Project1/published.png)
+![Caption for the picture.](/home/shek21/Documents/dataone/DataONE_2018_Summer_Intern_Project1/people.png)
+![Caption for the picture.](/home/shek21/Documents/dataone/DataONE_2018_Summer_Intern_Project1/geo.png)
+![Caption for the picture.](/home/shek21/Documents/dataone/DataONE_2018_Summer_Intern_Project1/temp.png)
