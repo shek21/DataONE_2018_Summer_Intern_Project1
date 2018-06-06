@@ -53,3 +53,51 @@ eml_validate("test.xml")
 ```
 
 
+* Console Output for "eml"
+```{r}
+## <eml packageId="dd047b7e-b737-4e02-a6bc-97069da58b77" system="uuid" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 eml.xsd">
+##   <dataset>
+##     <title>test from WT to DataONE</title>
+##     <creator>
+##       <individualName>
+##         <givenName>Seokki</givenName>
+##         <surName>Lee</surName>
+##       </individualName>
+##       <electronicMailAddress>slee195@hawk.iit.edu</electronicMailAddress>
+##     </creator>
+##     <pubDate>2018-06-06</pubDate>
+##     <abstract>test abs</abstract>
+##     <coverage>
+##       <geographicCoverage>
+##         <geographicDescription>Chicago</geographicDescription>
+##         <boundingCoordinates>
+##           <westBoundingCoordinate>-87.623177</westBoundingCoordinate>
+##           <eastBoundingCoordinate>-87.623177</eastBoundingCoordinate>
+##           <northBoundingCoordinate>41.881832</northBoundingCoordinate>
+##           <southBoundingCoordinate>41.881832</southBoundingCoordinate>
+##         </boundingCoordinates>
+##       </geographicCoverage>
+##       <temporalCoverage>
+##         <rangeOfDates>
+##           <beginDate>
+##             <calendarDate>2018-06-06</calendarDate>
+##           </beginDate>
+##           <endDate>
+##             <calendarDate>2018-06-06</calendarDate>
+##           </endDate>
+##         </rangeOfDates>
+##       </temporalCoverage>
+##     </coverage>
+##     <contact>
+##       <individualName>
+##         <givenName>Seokki</givenName>
+##         <surName>Lee</surName>
+##       </individualName>
+##       <organizationName>IIT</organizationName>
+##       <phone>000-000-0000</phone>
+##       <electronicMailAddress>slee195@hawk.iit.edu</electronicMailAddress>
+##     </contact>
+##   </dataset>
+## </eml>
+```
+
