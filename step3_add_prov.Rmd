@@ -18,3 +18,47 @@ Create a relationship among those objects as provenance
 ```{r}
 dp <- describeWorkflow(dp, sources=sourceObjId, program=programObjId, derivations=outputObjId)
 ```
+
+
+* Console output
+```{r}
+## Members:
+##
+## filename                  format       mediaType  size     identifier                               modified ## local 
+## test_child2_copied_object text/plain   NA         54       urn:uuid:5f98707d-...b-8ddd-2aa0fff4cb04 n        y     
+## copy_testChild2.R         appl...ion/R NA         156      urn:uuid:7f54e506-...2-9f32-9266550d3b8a n        y     
+## test.xml                  eml:...2.1.1 NA         1777     urn:uuid:88e0b490-...f-ab4c-44ee25a68632 n        y     
+## test_child2_object        text/plain   NA         54       urn:uuid:dc3513fe-...a-bcd1-d7ac1078d5db n        y     
+## 
+## Package identifier: NA
+## RightsHolder: NA
+## 
+## 
+## Relationships (updated):
+## 
+##                             subject                 predicate                              object
+## _8f74079a-cbc3-4...cd1-0b25855f06a0                  rdf:type                    prov:Association
+## _8f74079a-cbc3-4...cd1-0b25855f06a0              prov:hadPlan                   copy_testChild2.R
+## _b1c6e550-43f1-4...be3-9cffb9c78cb8                  rdf:type                    prov:Association
+## _b1c6e550-43f1-4...be3-9cffb9c78cb8              prov:hadPlan                   copy_testChild2.R
+##                   copy_testChild2.R       cito:isDocumentedBy                            test.xml
+##                   copy_testChild2.R                  rdf:type                     provone:Program
+##           test_child2_copied_object       cito:isDocumentedBy                            test.xml
+##           test_child2_copied_object                  rdf:type                        provone:Data
+##           test_child2_copied_object       prov:wasDerivedFrom                  test_child2_object
+##           test_child2_copied_object       prov:wasGeneratedBy urn:uuid:89263ab...ca2-e8863e5c5eac
+##           test_child2_copied_object       prov:wasGeneratedBy urn:uuid:c8c2272...8d4-16a74167370c
+##                  test_child2_object       cito:isDocumentedBy                            test.xml
+##                  test_child2_object                  rdf:type                        provone:Data
+##                            test.xml            cito:documents           test_child2_copied_object
+##                            test.xml            cito:documents                   copy_testChild2.R
+##                            test.xml            cito:documents                  test_child2_object
+## urn:uuid:89263ab...ca2-e8863e5c5eac        dcterms:identifier urn:uuid:89263ab...ca2-e8863e5c5eac
+## urn:uuid:89263ab...ca2-e8863e5c5eac                  rdf:type                   provone:Execution
+## urn:uuid:89263ab...ca2-e8863e5c5eac prov:qualifiedAssociation _8f74079a-cbc3-4...cd1-0b25855f06a0
+## urn:uuid:89263ab...ca2-e8863e5c5eac                 prov:used                  test_child2_object
+## urn:uuid:c8c2272...8d4-16a74167370c        dcterms:identifier urn:uuid:c8c2272...8d4-16a74167370c
+## urn:uuid:c8c2272...8d4-16a74167370c                  rdf:type                   provone:Execution
+## urn:uuid:c8c2272...8d4-16a74167370c prov:qualifiedAssociation _b1c6e550-43f1-4...be3-9cffb9c78cb8
+## urn:uuid:c8c2272...8d4-16a74167370c                 prov:used                  test_child2_object
+```

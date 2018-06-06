@@ -45,3 +45,28 @@ outputObj <- new("DataObject",
 dp <- addMember(dp, outputObj, mo=metadataObj)
 ```
 
+
+* Console Output
+```{r}
+## Members:
+## 
+## filename        format    mediaType  size     identifier    modified local 
+## copy_t...ild2.R app...n/R NA         156      urn:u...7660e n        y     
+## test_c...object tex...ain NA         54       urn:u...8066f n        y     
+## test.xml        eml...1.1 NA         1777     urn:u...78e4a n        y     
+## test_c...object tex...ain NA         54       urn:u...fcc23 n        y     
+## 
+## Package identifier: NA
+## RightsHolder: NA
+## 
+## 
+## Relationships (updated):
+## 
+##                 subject           predicate                object
+## 4     copy_testChild2.R cito:isDocumentedBy              test.xml
+## 2    test_child2_object cito:isDocumentedBy              test.xml
+## 6 test_chil...ed_object cito:isDocumentedBy              test.xml
+## 3              test.xml      cito:documents     copy_testChild2.R
+## 1              test.xml      cito:documents    test_child2_object
+## 5              test.xml      cito:documents test_chil...ed_object
+```
