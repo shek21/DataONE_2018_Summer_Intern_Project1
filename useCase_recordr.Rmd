@@ -1,11 +1,13 @@
 ---
-title: "Recordr simulation for a use case"
+title: "Recordr for a test use case"
 output: html_document
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+* A test use case package: https://test.arcticdata.io/#view/urn:uuid:943a7035-579a-4e34-8214-3de2f617f5e8
+
 
 * Record provenance from R script 
 ```{r}
