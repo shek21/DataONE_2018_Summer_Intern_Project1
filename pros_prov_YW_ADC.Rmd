@@ -47,6 +47,4 @@ ggsave("./mtcars_g.png", width = 6, height = 4)
 #@end analysis
 ```
 
-```{r pressure, echo=FALSE, fig.cap="A caption", out.width = '100%'}
-knitr::include_graphics("pros_prov_YW_ADC.png")
-```
+![Caption for the picture.](pros_prov_YW_ADC.png)
