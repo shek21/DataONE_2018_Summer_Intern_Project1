@@ -1,0 +1,111 @@
+---
+title: "R script that automatically generate and publish a package"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+* A script for creating a package (including all the necessary intermediate steps) inside a tale. By running this script, the package created will be published to DataONE repository.
+```{r}
+library("dataone")
+library("datapack")
+library("EML")
+
+#1 create a new package
+dp <- new("DataPackage")
+
+
+#2 add objects into the package
+#2-1 metadata
+metadataObj <- new("DataObject", format="eml://ecoinformatics.org/eml-2.1.1", 
+                   filename="/Users/eunjungpark/Documents/dataone/AOOS/urn_uuid_1d23e155_3ef5_47c6_9612_027c80855e8d/data/metadata.xml")
+dp <- addMember(dp, metadataObj)
+
+#2-2 source
+# add PAH.csv
+sourceObj1 <- new("DataObject", 
+                 format="text/csv",
+                 filename="/Users/eunjungpark/Documents/dataone/AOOS/urn_uuid_1d23e155_3ef5_47c6_9612_027c80855e8d/data/PAH.csv")
+
+dp <- addMember(dp, sourceObj1, metadataObj)
+
+# add Alkane.csv
+sourceObj2 <- new("DataObject", 
+                 format="text/csv",
+                 filename="/Users/eunjungpark/Documents/dataone/AOOS/urn_uuid_1d23e155_3ef5_47c6_9612_027c80855e8d/data/Alkane.csv")
+
+dp <- addMember(dp, sourceObj2, metadataObj)
+
+# add Sample.csv
+sourceObj3 <- new("DataObject", 
+                 format="text/csv",
+                 filename="/Users/eunjungpark/Documents/dataone/AOOS/urn_uuid_1d23e155_3ef5_47c6_9612_027c80855e8d/data/Sample.csv")
+
+dp <- addMember(dp, sourceObj3, metadataObj)
+
+# add Non-EVOS_SINs.csv
+sourceObj4 <- new("DataObject", 
+                 format="text/csv",
+                 filename="/Users/eunjungpark/Documents/dataone/AOOS/urn_uuid_1d23e155_3ef5_47c6_9612_027c80855e8d/data/Non-EVOS_SINs.csv")
+
+dp <- addMember(dp, sourceObj4, metadataObj)
+
+# 2-3 program scripts
+mergeObj <- new("DataObject", 
+               format="application/R",
+               filename="/Users/eunjungpark/Documents/dataone/AOOS/urn_uuid_1d23e155_3ef5_47c6_9612_027c80855e8d/data/Total_PAH_and_Alkanes_GoA_Hydrocarbons_Clean.R")
+
+dp <- addMember(dp, mergeObj, metadataObj)
+
+genObj <- new("DataObject",
+              format="application/R",
+              filename="/Users/eunjungpark/Documents/dataone/AOOS/urn_uuid_1d23e155_3ef5_47c6_9612_027c80855e8d/data/hcdbSites.R")
+
+dp <- addMember(dp, genObj, metadataObj)
+
+#2-4 output artifacts
+outputObj1 <- new("DataObject",
+                  format="text/csv",
+                  filename="/Users/eunjungpark/Documents/dataone/AOOS/urn_uuid_1d23e155_3ef5_47c6_9612_027c80855e8d/data/Total_Aromatic_Alkanes_PWS.csv")
+
+dp <- addMember(dp, outputObj1, metadataObj)
+
+outputObj2 <- new("DataObject",
+                  format="image/png",
+                  filename="/Users/eunjungpark/Documents/dataone/AOOS/urn_uuid_1d23e155_3ef5_47c6_9612_027c80855e8d/data/hcdbSamplesGOA.png")
+
+dp <- addMember(dp, outputObj2, metadataObj)
+
+outputObj3 <- new("DataObject",
+                  format="image/png",
+                  filename="/Users/eunjungpark/Documents/dataone/AOOS/urn_uuid_1d23e155_3ef5_47c6_9612_027c80855e8d/data/hcdbSampleLocs.png")
+
+#2-5 additional objs if exists
+provObj <- new("DataObject",
+               format="image/png",
+               filename="/Users/eunjungpark/Documents/dataone/AOOS/urn_uuid_1d23e155_3ef5_47c6_9612_027c80855e8d/data/pros_prov_YW_AOOS.png")
+
+dp <- addMember(dp, provObj, metadataObj)
+
+#2-6 edit metadata
+# create otherEntity for the addition objs
+#devtools::install_github("nceas/arcticdatautils"); library(arcticdatautils)
+#otherEnt <- articdatautils::pid_to_eml_other_entity()
+
+
+#3 add provenance information to the package
+dp <- describeWorkflow(dp, sources=sourceObj1, program=mergeObj, derivations=outputObj1)
+dp <- describeWorkflow(dp, sources=sourceObj2, program=mergeObj, derivations=outputObj1)
+dp <- describeWorkflow(dp, sources=sourceObj3, program=mergeObj, derivations=outputObj1)
+dp <- describeWorkflow(dp, sources=sourceObj4, program=mergeObj, derivations=outputObj1)
+dp <- describeWorkflow(dp, sources=outputObj1, program=genObj, derivations=outputObj2)
+dp <- describeWorkflow(dp, sources=outputObj1, program=genObj, derivations=outputObj3)
+
+
+#4 publish the package to DataONE
+#d1c <- D1Client("STAGING", "urn:node:mnTestARCTIC")
+#pkgId <- uploadDataPackage(d1c, dp, public=TRUE, quiet=FALSE)
+```
+
