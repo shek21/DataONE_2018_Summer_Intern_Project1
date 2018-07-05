@@ -1,0 +1,71 @@
+
+/* Start of top-level graph */
+digraph Workflow {
+rankdir=TB
+
+/* Title for graph */
+fontname=Helvetica; fontsize=18; labelloc=t
+label=Total_PAH_and_Al
+
+/* Start of double cluster for drawing box around nodes in workflow */
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; penwidth=0
+
+/* Style for nodes representing atomic programs in workflow */
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing atomic programs in workflow */
+Total_PAH_and_Al [shape=record rankdir=LR label="{<f0> Total_PAH_and_Al |<f1> Total_PAH_and_Al...rocarbons_Clean.R}"];
+
+/* Style for nodes representing non-parameter data channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+
+/* Nodes for non-parameter data channels in workflow */
+Total_Aromatic_Alkanes_PWS [shape=record rankdir=LR label="{<f0> Total_Aromatic_Alkanes_PWS |<f1> file\:Total_Aromatic_Alkanes_PWS.csv}"];
+PAH [shape=record rankdir=LR label="{<f0> PAH |<f1> file\:PAH.csv}"];
+Sample [shape=record rankdir=LR label="{<f0> Sample |<f1> file\:Sample.csv}"];
+"Non-EVOS_SINs" [shape=record rankdir=LR label="{<f0> Non-EVOS_SINs |<f1> file\:Non-EVOS_SINs.csv}"];
+Alkane [shape=record rankdir=LR label="{<f0> Alkane |<f1> file\:Alkane.csv}"];
+
+/* Style for nodes representing parameter channels in workflow */
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+
+/* Nodes representing parameter channels in workflow */
+
+/* Edges representing connections between programs and channels */
+Total_PAH_and_Al -> Total_Aromatic_Alkanes_PWS
+PAH -> Total_PAH_and_Al
+Sample -> Total_PAH_and_Al
+"Non-EVOS_SINs" -> Total_PAH_and_Al
+Alkane -> Total_PAH_and_Al
+
+/* End of double cluster for drawing box around nodes in workflow */
+}}
+
+/* Style for nodes representing workflow input ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow input ports */
+PAH_input_port [label=""]
+Sample_input_port [label=""]
+"Non-EVOS_SINs_input_port" [label=""]
+Alkane_input_port [label=""]
+
+/* Style for nodes representing workflow output ports */
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+
+/* Nodes representing workflow output ports */
+Total_Aromatic_Alkanes_PWS_output_port [label=""]
+
+/* Edges from input ports to channels */
+PAH_input_port -> PAH
+Sample_input_port -> Sample
+"Non-EVOS_SINs_input_port" -> "Non-EVOS_SINs"
+Alkane_input_port -> Alkane
+
+/* Edges from channels to output ports */
+Total_Aromatic_Alkanes_PWS -> Total_Aromatic_Alkanes_PWS_output_port
+
+/* End of top-level graph */
+}
+

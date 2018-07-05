@@ -1,0 +1,48 @@
+digraph Workflow {
+rankdir=TB
+fontname=Courier; fontsize=18; labelloc=t
+label=EVOS_GoA_Analysis
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; color=white
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+Analysis [shape=record rankdir=LR label="{<f0> Analysis |<f1> hdbcSites.R}"];
+DataMerge [shape=record rankdir=LR label="{<f0> DataMerge |<f1> Total_PAH_and_Alkanes_GoA_Hydrocarbons_Clean.R}"];
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+Total_Aromatic_Alkanes_PWS [shape=record rankdir=LR label="{<f0> Total_Aromatic_Alkanes_PWS |<f1> file\:Total_Aromatic_Alkanes_PWS.csv}"];
+PAH [shape=record rankdir=LR label="{<f0> PAH |<f1> file\:PAH.csv}"];
+Sample [shape=record rankdir=LR label="{<f0> Sample |<f1> file\:Sample.csv}"];
+Non_EVOS_SINs [shape=record rankdir=LR label="{<f0> Non_EVOS_SINs |<f1> file\:Non-EVOS_SINs.csv}"];
+Alkane [shape=record rankdir=LR label="{<f0> Alkane |<f1> file\:Alkane.csv}"];
+hcdbSampleLocs [shape=record rankdir=LR label="{<f0> hcdbSampleLocs |<f1> file\:}"];
+hcdbSamplesGOA [shape=record rankdir=LR label="{<f0> hcdbSamplesGOA |<f1> file\:}"];
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+Analysis -> hcdbSampleLocs
+Analysis -> hcdbSamplesGOA
+Total_Aromatic_Alkanes_PWS -> Analysis
+DataMerge -> Total_Aromatic_Alkanes_PWS
+PAH -> DataMerge
+Sample -> DataMerge
+Non_EVOS_SINs -> DataMerge
+Alkane -> DataMerge
+}}
+subgraph cluster_input_ports_group_outer { label=""; color=white
+subgraph cluster_input_ports_group_inner { label=""; color=white
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+PAH_input_port [label=""]
+Sample_input_port [label=""]
+Non_EVOS_SINs_input_port [label=""]
+Alkane_input_port [label=""]
+}}
+subgraph cluster_output_ports_group_outer { label=""; color=white
+subgraph cluster_output_ports_group_inner { label=""; color=white
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+hcdbSampleLocs_output_port [label=""]
+hcdbSamplesGOA_output_port [label=""]
+}}
+PAH_input_port -> PAH
+Sample_input_port -> Sample
+Non_EVOS_SINs_input_port -> Non_EVOS_SINs
+Alkane_input_port -> Alkane
+hcdbSampleLocs -> hcdbSampleLocs_output_port
+hcdbSamplesGOA -> hcdbSamplesGOA_output_port
+}

@@ -1,0 +1,275 @@
+---
+title: "Transparancy of the provenance information for hydrocarbons use case in DataONE"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "/Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency")
+```
+
+### Retrieve provenance information from the package (Option 1)
+#### Get package from production node of Gulf of Alaska Data Portal (GOA)
+```{r}
+library(dataone)
+library(datapack)
+d1c <- D1Client("PROD", "urn:node:GOA")
+pkg <- getDataPackage(d1c, identifier = "urn:uuid:1d23e155-3ef5-47c6-9612-027c80855e8d", lazyLoad=TRUE, limit="0MB", quiet=FALSE)
+saveWidth <- getOption("width")
+options(width=120)
+```
+
+#### Retrieve information for the package
+```{r}
+rels <- getRelationships(pkg, condense=T)
+rels
+```
+
+#### Retrieve provenance information from the package
+```{r}
+prov <- subset(rels, predicate=="prov:used" | predicate =="prov:wasDerivedFrom" | predicate=="prov:wasGeneratedBy")
+prov
+```
+
+#### Replace ids with names
++ Create a data frame that contains id->name relationship
+```{r}
+provPlan <- subset(rels,predicate == "prov:hadPlan")
+provAsso <- subset(rels,predicate == "prov:qualifiedAssociation")
+provPlan
+provAsso
+```
+```{r}
+provAsso$object <- provPlan$object[match(provAsso$object, provPlan$subject)]
+provAsso
+```
+
++ Replace ids with names in the provenance relationship
+```{r}
+indx <- match(prov$subject, provAsso$subject, nomatch = 0)
+prov$subject[indx != 0] <- provAsso$object[indx]
+indx <- match(prov$object, provAsso$subject, nomatch = 0)
+prov$object[indx != 0] <- provAsso$object[indx]
+prov
+```
+
+#### Convert data fram columns from factors to chars
+```{r}
+prov <- data.frame(lapply(prov, as.character), stringsAsFactors=FALSE)
+```
+
+#### Create RDF and store into a file
+```{r}
+library(rdflib)
+```
+
+<!--
+```{r}
+rdf <- rdf()
+for (i in 1:nrow(prov)) rdf_add(rdf,prov$object[i],prov$predicate[i],prov$subject[i], subjectType="uri", objectType="uri")
+options(rdf_print_format = "rdfxml")
+rdf_serialize(rdf, "./results/prov.rdfxml")
+rdf
+```
+
+#### Convert rdf file to dot and then to pdf to visualize
+```{r}
+system("rapper --output dot /Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency/results/prov.rdfxml > /Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency/results/prov.dot")
+system("dot -Tpdf /Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency/results/prov.dot > /Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency/results/prov.pdf")
+```
+```{r, out.width="950px", out.height="600px"}
+knitr::include_graphics("./results/prov.pdf")
+```
+
+
+#### Generate Simpler Workflow
+-->
+
+```{r}
+provSimp <- subset(prov, predicate=="prov:used" | predicate=="prov:wasGeneratedBy")
+provSimp
+```
+
+```{r}
+provSimp <- data.frame(lapply(provSimp, as.character), stringsAsFactors=FALSE)
+```
+
+```{r}
+rdfSimp <- rdf()
+for (i in 1:nrow(provSimp)) rdf_add(rdfSimp, provSimp$object[i], provSimp$predicate[i], provSimp$subject[i], subjectType="uri", objectType="uri")
+options(rdf_print_format = "rdfxml")
+rdf_serialize(rdfSimp, "./results/provSimp.rdfxml")
+rdf
+```
+
+```{r}
+system("rapper --output dot /Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency/results/provSimp.rdfxml > /Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency/results/provSimp.dot")
+system("dot -Tpdf /Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency/results/provSimp.dot > /Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency/results/provSimp.pdf")
+```
+```{r, out.width="950px", out.height="600px"}
+knitr::include_graphics("./results/provSimp.pdf")
+```
+
+
+<!--
+#### Using resource map
++ Collect only provenance information
+```{r}
+relsNoCondense <- getRelationships(pkg)
+provRels <- relsNoCondense[ grep("prov", relsNoCondense$predicate), ]
+provRels
+```
+
++ Create a new resource map and save into a file
+```{r}
+resMapId <- sprintf("%s%s", "resourceMap_", uuid::UUIDgenerate())  
+resMap <- new("ResourceMap", id=resMapId)
+resMap <- createFromTriples(resMap, provRels, getIdentifiers(pkg))
+serializeRDF(resMap, "./data/rdf-prov-uncleaned.xml")
+```
+
++ To get a clean workflow, users have to manually go through the resource map
+```{r}
+system("rapper --output dot /Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency/data/rdf-prov > /Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency/results/provFromRM.dot")
+system("dot -Tpdf /Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency/results/provFromRM.dot > /Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency/results/provFromRM.pdf")
+```
+```{r, out.width="950px", out.height="300px"}
+knitr::include_graphics("./results/provFromRM.pdf")
+```
+-->
+
+#### Visualize provenance in YesWorkflow (YW)
+##### Capture provenance needed for generating YW comments
+```{r}
+provYwDef <- subset(prov, predicate == "prov:wasDerivedFrom")
+provYwUsed <- subset(prov, predicate == "prov:used")
+provYwDef
+provYwUsed
+```
+
+##### Create data frame which shows subject=output, predicate=program, and object=input
+```{r}
+provYwDef$predicate <- provYwUsed$subject[match(provYwDef$object, provYwUsed$object, nomatch=0)]
+provYwDef
+```
+
+##### Split data frame by the program
+```{r}
+ins <- split(provYwDef$object, provYwDef$predicate)
+outs <- split(provYwDef$subject, provYwDef$predicate)
+ins
+outs
+```
+
+##### Generate YW comments for inputs and outputs for each group
+```{r}
+ins <- data.frame(lapply(as.data.frame(ins), as.character), stringsAsFactors = FALSE)
+for(i in names(ins)) ins[[i]] <- paste("#@in ", sub("\\..*","",ins[[i]]), " @URI file:", ins[[i]],sep="")
+ins
+outs <- data.frame(lapply(as.data.frame(outs), as.character), stringsAsFactors = FALSE)
+for(i in names(outs)) outs[[i]] <- paste("#@out ", sub("\\..*","",outs[[i]]), " @URI file:", outs[[i]],sep="")
+outs
+```
+
+##### Combine YW comments in each group
+```{r}
+inouts <- rbind(ins,outs)
+inouts
+```
+
+##### Create file, write comments into the corresponding file, and generate YW
+```{r}
+for(i in names(inouts)) {
+  filename <- paste("YW",i,sep="")
+  name <- paste("test/",filename,sep="")
+  file.create(name)
+  write(paste("#@begin",sub("\\..*","",i)),file=name,append = TRUE)
+  write(unique(ins[[i]]),file=name,append=TRUE)
+  write(paste("#@begin",sub("\\..*","",i), "@desc", i),file=name,append = TRUE)
+  write(unique(inouts[[i]]),file=name,append=TRUE)
+  write(paste("#@end",sub("\\..*","",i)),file=name,append = TRUE)
+  write(unique(outs[[i]]),file=name,append=TRUE)
+  write(paste("#@end",sub("\\..*","",i)),file=name,append = TRUE)
+  system(paste("java -jar /Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency/yw_jar/yesworkflow-0.2.1-SNAPSHOT-jar-with-dependencies.jar graph ",name," -c graph.view=combined -c graph.layout=tb > ",sub("\\..*","",name),".gv",sep=""))
+  system(paste("dot -Tpdf ",sub("\\..*","",name),".gv > ",sub("\\..*","",name),".pdf", sep=""))
+  #system(paste("cat /Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency/",sub("\\..*","",name),sep = ""),intern = TRUE)
+}
+```
+
+
+```{r}
+system("cat /Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency/test/YWTotal_PAH_and_Al.R",intern = TRUE)
+system("cat /Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency/test/YWhcdbSites.R",intern = TRUE)
+```
+
+<!--
+```{r, out.width="950px", out.height="600px"}
+knitr::include_graphics("./test/YWTotalPAH.pdf")
+knitr::include_graphics("./test/YWhcdbSites.pdf")
+```
+-->
+
+##### Run, e.g, make.sh (below script block can be stored in a single executable file)
+```{r, engine = 'bash', eval = FALSE}
+# define base directories
+export EXAMPLE_DIR=.
+export PROJECT_ROOT=.
+
+# define lcoation of YesWorkflow jar file
+export YW_JAR="${PROJECT_ROOT}/yw_jar/yesworkflow-0.2.1-SNAPSHOT-jar-with-dependencies.jar"
+
+# define command for running YesWorkflow
+export YW_CMD="java -jar $YW_JAR"
+
+# destination of facts, views and query results
+export SCRIPT_DIR=${EXAMPLE_DIR}/scripts
+export RESULTS_DIR=${EXAMPLE_DIR}/results
+
+mkdir -p $RESULTS_DIR
+
+# generate workflow using commented script
+graph_name="aoos_retro_wf_graph"
+$YW_CMD graph "./scripts/aoos.R" \
+    -c graph.view=combined \
+    -c graph.layout=tb \
+      > $RESULTS_DIR/$graph_name.gv
+dot -Tpdf $RESULTS_DIR/$graph_name.gv > $RESULTS_DIR/$graph_name.pdf
+dot -Tsvg $RESULTS_DIR/$graph_name.gv > $RESULTS_DIR/$graph_name.svg
+```
+
+```{r, out.width="950px", out.height="600px"}
+#system("source ./make.sh")
+knitr::include_graphics("./results/aoos_retro_wf_graph.pdf")
+```
+
+
+### Record provenance using recordr (Option2)
+```{r}
+source("./setup.R")
+library(recordr)
+rc <- new("Recordr")
+```
+
+#### Record provenance for the first script
+```{r}
+record(rc, "./scripts/Total_PAH_and_Alkanes_GoA_Hydrocarbons_Clean.R", tag="total_pah_and_alkanes_goa_hydrocarbons_clean script1")
+```
+
+#### Record provenance for the second script
+```{r}
+record(rc, "./scripts/hcdbSites.R", tag="hcdbsites script2")
+```
+
+#### List the records
+```{r}
+listRuns(rc)
+```
+
+#### View each record in detail
+```{r}
+viewRuns(rc, tag="script1")
+viewRuns(rc, tag="script2")
+```
+

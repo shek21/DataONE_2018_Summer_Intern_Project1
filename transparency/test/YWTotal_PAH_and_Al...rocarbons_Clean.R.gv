@@ -1,0 +1,40 @@
+digraph Workflow {
+rankdir=TB
+fontname=Courier; fontsize=18; labelloc=t
+label=Total_PAH_and_Al
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; color=white
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+Total_PAH_and_Al [shape=record rankdir=LR label="{<f0> Total_PAH_and_Al |<f1> Total_PAH_and_Al...rocarbons_Clean.R}"];
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+PAH [shape=record rankdir=LR label="{<f0> PAH |<f1> file\:PAH.csv}"];
+Sample [shape=record rankdir=LR label="{<f0> Sample |<f1> file\:Sample.csv}"];
+"Non-EVOS_SINs" [shape=record rankdir=LR label="{<f0> "Non-EVOS_SINs" |<f1> file\:Non-EVOS_SINs.csv}"];
+Alkane [shape=record rankdir=LR label="{<f0> Alkane |<f1> file\:Alkane.csv}"];
+Total_Aromatic_Alkanes_PWS [shape=record rankdir=LR label="{<f0> Total_Aromatic_Alkanes_PWS |<f1> file\:Total_Aromatic_Alkanes_PWS.csv}"];
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+Total_PAH_and_Al -> Total_Aromatic_Alkanes_PWS
+PAH -> Total_PAH_and_Al
+Sample -> Total_PAH_and_Al
+"Non-EVOS_SINs" -> Total_PAH_and_Al
+Alkane -> Total_PAH_and_Al
+}}
+subgraph cluster_input_ports_group_outer { label=""; color=white
+subgraph cluster_input_ports_group_inner { label=""; color=white
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+PAH_input_port [label=""]
+Sample_input_port [label=""]
+"Non-EVOS_SINs_input_port" [label=""]
+Alkane_input_port [label=""]
+}}
+subgraph cluster_output_ports_group_outer { label=""; color=white
+subgraph cluster_output_ports_group_inner { label=""; color=white
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+Total_Aromatic_Alkanes_PWS_output_port [label=""]
+}}
+PAH_input_port -> PAH
+Sample_input_port -> Sample
+"Non-EVOS_SINs_input_port" -> "Non-EVOS_SINs"
+Alkane_input_port -> Alkane
+Total_Aromatic_Alkanes_PWS -> Total_Aromatic_Alkanes_PWS_output_port
+}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xml:base="localhost://">
+  <rdf:Description rdf:about="Alkane.csv">
+    <ns0:used xmlns:ns0="prov:" rdf:resource="Total_PAH_and_Al...rocarbons_Clean.R"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="DataDownload.R">
+    <ns0:wasGeneratedBy xmlns:ns0="prov:" rdf:resource="Sample.csv"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="DataDownload.R">
+    <ns0:wasGeneratedBy xmlns:ns0="prov:" rdf:resource="PAH.csv"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="DataDownload.R">
+    <ns0:wasGeneratedBy xmlns:ns0="prov:" rdf:resource="CollectionMethods.csv"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="DataDownload.R">
+    <ns0:wasGeneratedBy xmlns:ns0="prov:" rdf:resource="Alkane.csv"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="Sample.csv">
+    <ns0:used xmlns:ns0="prov:" rdf:resource="Total_PAH_and_Al...rocarbons_Clean.R"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="Non-EVOS_SINs.csv">
+    <ns0:used xmlns:ns0="prov:" rdf:resource="Total_PAH_and_Al...rocarbons_Clean.R"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="Total_Aromatic_Alkanes_PWS.csv">
+    <ns0:used xmlns:ns0="prov:" rdf:resource="hcdbSites.R"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="hcdbSites.R">
+    <ns0:wasGeneratedBy xmlns:ns0="prov:" rdf:resource="hcdbSamplesGOA.png"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="hcdbSites.R">
+    <ns0:wasGeneratedBy xmlns:ns0="prov:" rdf:resource="hcdbSampleLocs.png"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="PAH.csv">
+    <ns0:used xmlns:ns0="prov:" rdf:resource="Total_PAH_and_Al...rocarbons_Clean.R"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="Total_PAH_and_Al...rocarbons_Clean.R">
+    <ns0:wasGeneratedBy xmlns:ns0="prov:" rdf:resource="Total_Aromatic_Alkanes_PWS.csv"/>
+  </rdf:Description>
+</rdf:RDF>

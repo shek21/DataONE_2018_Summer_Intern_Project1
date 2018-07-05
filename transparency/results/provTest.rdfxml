@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xml:base="localhost://">
+  <rdf:Description rdf:about="urn:uuid:d248eca5-0...4-8c8c-59838fa94666">
+    <ns0:used xmlns:ns0="prov:" rdf:resource="Total_Aromatic_Alkanes_PWS.csv"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="hcdbSampleLocs.png">
+    <ns0:wasGeneratedBy xmlns:ns0="prov:" rdf:resource="urn:uuid:d248eca5-0...4-8c8c-59838fa94666"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="Total_Aromatic_Alkanes_PWS.csv">
+    <ns0:wasDerivedFrom xmlns:ns0="prov:" rdf:resource="Alkane.csv"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="Total_Aromatic_Alkanes_PWS.csv">
+    <ns0:wasDerivedFrom xmlns:ns0="prov:" rdf:resource="Non-EVOS_SINs.csv"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="Total_Aromatic_Alkanes_PWS.csv">
+    <ns0:wasDerivedFrom xmlns:ns0="prov:" rdf:resource="Sample.csv"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="Total_Aromatic_Alkanes_PWS.csv">
+    <ns0:wasDerivedFrom xmlns:ns0="prov:" rdf:resource="PAH.csv"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="hcdbSamplesGOA.png">
+    <ns0:wasDerivedFrom xmlns:ns0="prov:" rdf:resource="Total_Aromatic_Alkanes_PWS.csv"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="hcdbSamplesGOA.png">
+    <ns0:wasGeneratedBy xmlns:ns0="prov:" rdf:resource="urn:uuid:d248eca5-0...4-8c8c-59838fa94666"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="Alkane.csv">
+    <ns0:wasGeneratedBy xmlns:ns0="prov:" rdf:resource="urn:uuid:e4e1e40a-5...e-af9a-18a2807d7444"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="PAH.csv">
+    <ns0:wasGeneratedBy xmlns:ns0="prov:" rdf:resource="urn:uuid:e4e1e40a-5...e-af9a-18a2807d7444"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="Sample.csv">
+    <ns0:wasGeneratedBy xmlns:ns0="prov:" rdf:resource="urn:uuid:e4e1e40a-5...e-af9a-18a2807d7444"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="urn:uuid:a4e3b687-f...7-a185-13d4d59d06f9">
+    <ns0:used xmlns:ns0="prov:" rdf:resource="Alkane.csv"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="urn:uuid:a4e3b687-f...7-a185-13d4d59d06f9">
+    <ns0:used xmlns:ns0="prov:" rdf:resource="Non-EVOS_SINs.csv"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="urn:uuid:a4e3b687-f...7-a185-13d4d59d06f9">
+    <ns0:used xmlns:ns0="prov:" rdf:resource="Sample.csv"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="urn:uuid:a4e3b687-f...7-a185-13d4d59d06f9">
+    <ns0:used xmlns:ns0="prov:" rdf:resource="PAH.csv"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="CollectionMethods.csv">
+    <ns0:wasGeneratedBy xmlns:ns0="prov:" rdf:resource="urn:uuid:e4e1e40a-5...e-af9a-18a2807d7444"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="hcdbSampleLocs.png">
+    <ns0:wasDerivedFrom xmlns:ns0="prov:" rdf:resource="Total_Aromatic_Alkanes_PWS.csv"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="Total_Aromatic_Alkanes_PWS.csv">
+    <ns0:wasGeneratedBy xmlns:ns0="prov:" rdf:resource="urn:uuid:a4e3b687-f...7-a185-13d4d59d06f9"/>
+  </rdf:Description>
+</rdf:RDF>

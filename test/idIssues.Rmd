@@ -1,0 +1,26 @@
+---
+title: "Why ids are different?"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "/Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency")
+```
+
+### Retrieve provenance information from the package
+```{r}
+library(dataone)
+library(datapack)
+d1c <- D1Client("PROD", "urn:node:GOA")
+pkg <- getDataPackage(d1c, identifier = "urn:uuid:1d23e155-3ef5-47c6-9612-027c80855e8d", lazyLoad=TRUE, limit="0MB", quiet=FALSE)
+saveWidth <- getOption("width")
+options(width=120)
+rels <- getRelationships(pkg, condense=T)
+prov <- subset(rels, predicate=="prov:used" | predicate =="prov:wasDerivedFrom" | predicate=="prov:wasGeneratedBy")
+prov
+pkg
+```
+

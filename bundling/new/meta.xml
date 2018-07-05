@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packageId="05f3bc40-8016-436f-b007-dfbd140a726c" system="uuid" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 eml.xsd">
+  <dataset>
+    <title>Bundling test for EVOS GoA</title>
+    <creator>
+      <individualName>
+        <givenName>Seokki</givenName>
+        <surName>Lee</surName>
+      </individualName>
+      <electronicMailAddress>slee195@hawk.iit.edu</electronicMailAddress>
+    </creator>
+    <pubDate>2018-07-03</pubDate>
+    <abstract>test abs</abstract>
+    <coverage>
+      <geographicCoverage>
+        <geographicDescription>Chicago</geographicDescription>
+        <boundingCoordinates>
+          <westBoundingCoordinate>-87.623177</westBoundingCoordinate>
+          <eastBoundingCoordinate>-87.623177</eastBoundingCoordinate>
+          <northBoundingCoordinate>41.881832</northBoundingCoordinate>
+          <southBoundingCoordinate>41.881832</southBoundingCoordinate>
+        </boundingCoordinates>
+      </geographicCoverage>
+      <temporalCoverage>
+        <rangeOfDates>
+          <beginDate>
+            <calendarDate>2018-07-03</calendarDate>
+          </beginDate>
+          <endDate>
+            <calendarDate>2018-07-20</calendarDate>
+          </endDate>
+        </rangeOfDates>
+      </temporalCoverage>
+    </coverage>
+    <contact>
+      <individualName>
+        <givenName>Seokki</givenName>
+        <surName>Lee</surName>
+      </individualName>
+      <organizationName>IIT</organizationName>
+      <phone>000-000-0000</phone>
+      <electronicMailAddress>slee195@hawk.iit.edu</electronicMailAddress>
+    </contact>
+  </dataset>
+</eml:eml>

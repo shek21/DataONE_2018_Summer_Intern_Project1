@@ -1,0 +1,32 @@
+digraph Workflow {
+rankdir=TB
+fontname=Courier; fontsize=18; labelloc=t
+label=hcdbSites
+subgraph cluster_workflow_box_outer { label=""; color=black; penwidth=2
+subgraph cluster_workflow_box_inner { label=""; color=white
+node[shape=box style=filled fillcolor="#CCFFCC" peripheries=1 fontname=Courier]
+hcdbSites [shape=record rankdir=LR label="{<f0> hcdbSites |<f1> hcdbSites.R}"];
+node[shape=box style="rounded,filled" fillcolor="#FFFFCC" peripheries=1 fontname=Helvetica]
+Total_Aromatic_Alkanes_PWS [shape=record rankdir=LR label="{<f0> Total_Aromatic_Alkanes_PWS |<f1> file\:Total_Aromatic_Alkanes_PWS.csv}"];
+hcdbSampleLocs [shape=record rankdir=LR label="{<f0> hcdbSampleLocs |<f1> file\:hcdbSampleLocs.png}"];
+hcdbSamplesGOA [shape=record rankdir=LR label="{<f0> hcdbSamplesGOA |<f1> file\:hcdbSamplesGOA.png}"];
+node[shape=box style="rounded,filled" fillcolor="#FCFCFC" peripheries=1 fontname=Helvetica]
+hcdbSites -> hcdbSampleLocs
+hcdbSites -> hcdbSamplesGOA
+Total_Aromatic_Alkanes_PWS -> hcdbSites
+}}
+subgraph cluster_input_ports_group_outer { label=""; color=white
+subgraph cluster_input_ports_group_inner { label=""; color=white
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+Total_Aromatic_Alkanes_PWS_input_port [label=""]
+}}
+subgraph cluster_output_ports_group_outer { label=""; color=white
+subgraph cluster_output_ports_group_inner { label=""; color=white
+node[shape=circle style="rounded,filled" fillcolor="#FFFFFF" peripheries=1 fontname=Helvetica width=0.2]
+hcdbSampleLocs_output_port [label=""]
+hcdbSamplesGOA_output_port [label=""]
+}}
+Total_Aromatic_Alkanes_PWS_input_port -> Total_Aromatic_Alkanes_PWS
+hcdbSampleLocs -> hcdbSampleLocs_output_port
+hcdbSamplesGOA -> hcdbSamplesGOA_output_port
+}

@@ -1,0 +1,42 @@
+digraph {
+	rankdir = LR;
+	charset="utf-8";
+
+	"Rlocalhost:///hcdbSampleLocs.png" -> "Rlocalhost:///hcdbSites.R" [ label="ns0:wasGeneratedBy" ];
+	"Rlocalhost:///hcdbSites.R" -> "Rlocalhost:///Total_Aromatic_Alkanes_PWS.csv" [ label="ns0:used" ];
+	"Rlocalhost:///Total_Aromatic_Alkanes_PWS.csv" -> "Rlocalhost:///Alkane.csv" [ label="ns0:wasDerivedFrom" ];
+	"Rlocalhost:///Total_Aromatic_Alkanes_PWS.csv" -> "Rlocalhost:///Non-EVOS_SINs.csv" [ label="ns0:wasDerivedFrom" ];
+	"Rlocalhost:///Total_Aromatic_Alkanes_PWS.csv" -> "Rlocalhost:///Sample.csv" [ label="ns0:wasDerivedFrom" ];
+	"Rlocalhost:///Total_Aromatic_Alkanes_PWS.csv" -> "Rlocalhost:///PAH.csv" [ label="ns0:wasDerivedFrom" ];
+	"Rlocalhost:///hcdbSamplesGOA.png" -> "Rlocalhost:///Total_Aromatic_Alkanes_PWS.csv" [ label="ns0:wasDerivedFrom" ];
+	"Rlocalhost:///hcdbSamplesGOA.png" -> "Rlocalhost:///hcdbSites.R" [ label="ns0:wasGeneratedBy" ];
+	"Rlocalhost:///Total_PAH_and_Al...rocarbons_Clean.R" -> "Rlocalhost:///Alkane.csv" [ label="ns0:used" ];
+	"Rlocalhost:///Total_PAH_and_Al...rocarbons_Clean.R" -> "Rlocalhost:///Non-EVOS_SINs.csv" [ label="ns0:used" ];
+	"Rlocalhost:///Total_PAH_and_Al...rocarbons_Clean.R" -> "Rlocalhost:///Sample.csv" [ label="ns0:used" ];
+	"Rlocalhost:///Total_PAH_and_Al...rocarbons_Clean.R" -> "Rlocalhost:///PAH.csv" [ label="ns0:used" ];
+	"Rlocalhost:///Alkane.csv" -> "Rlocalhost:///DataDownload.R" [ label="ns0:wasGeneratedBy" ];
+	"Rlocalhost:///PAH.csv" -> "Rlocalhost:///DataDownload.R" [ label="ns0:wasGeneratedBy" ];
+	"Rlocalhost:///Sample.csv" -> "Rlocalhost:///DataDownload.R" [ label="ns0:wasGeneratedBy" ];
+	"Rlocalhost:///CollectionMethods.csv" -> "Rlocalhost:///DataDownload.R" [ label="ns0:wasGeneratedBy" ];
+	"Rlocalhost:///hcdbSampleLocs.png" -> "Rlocalhost:///Total_Aromatic_Alkanes_PWS.csv" [ label="ns0:wasDerivedFrom" ];
+	"Rlocalhost:///Total_Aromatic_Alkanes_PWS.csv" -> "Rlocalhost:///Total_PAH_and_Al...rocarbons_Clean.R" [ label="ns0:wasGeneratedBy" ];
+
+	// Resources
+	"Rlocalhost:///hcdbSampleLocs.png" [ label="localhost:///hcdbSampleLocs.png", shape = ellipse, color = blue ];
+	"Rlocalhost:///hcdbSites.R" [ label="localhost:///hcdbSites.R", shape = ellipse, color = blue ];
+	"Rlocalhost:///Total_Aromatic_Alkanes_PWS.csv" [ label="localhost:///Total_Aromatic_Alkanes_PWS.csv", shape = ellipse, color = blue ];
+	"Rlocalhost:///Alkane.csv" [ label="localhost:///Alkane.csv", shape = ellipse, color = blue ];
+	"Rlocalhost:///Non-EVOS_SINs.csv" [ label="localhost:///Non-EVOS_SINs.csv", shape = ellipse, color = blue ];
+	"Rlocalhost:///Sample.csv" [ label="localhost:///Sample.csv", shape = ellipse, color = blue ];
+	"Rlocalhost:///PAH.csv" [ label="localhost:///PAH.csv", shape = ellipse, color = blue ];
+	"Rlocalhost:///hcdbSamplesGOA.png" [ label="localhost:///hcdbSamplesGOA.png", shape = ellipse, color = blue ];
+	"Rlocalhost:///Total_PAH_and_Al...rocarbons_Clean.R" [ label="localhost:///Total_PAH_and_Al...rocarbons_Clean.R", shape = ellipse, color = blue ];
+	"Rlocalhost:///DataDownload.R" [ label="localhost:///DataDownload.R", shape = ellipse, color = blue ];
+	"Rlocalhost:///CollectionMethods.csv" [ label="localhost:///CollectionMethods.csv", shape = ellipse, color = blue ];
+
+	// Anonymous nodes
+
+	// Literals
+
+	label="\n\nModel:\n(Unknown)\n\nNamespaces:\nrdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#\nns0: prov:\n";
+}

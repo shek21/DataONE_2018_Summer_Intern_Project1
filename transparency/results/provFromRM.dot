@@ -1,0 +1,30 @@
+digraph {
+	rankdir = LR;
+	charset="utf-8";
+
+	"Rhttps://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A44108e76-405d-4d58-b1b3-fb4b55e3fff9" -> "Rurn:uuid:a4e3b687-fb17-4f37-a185-13d4d59d06f9" [ label="prov:wasGeneratedBy" ];
+	"Rhttps://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ab4b3cc45-4953-43d3-910a-847528577531" -> "Rurn:uuid:d248eca5-064f-4ee4-8c8c-59838fa94666" [ label="prov:wasGeneratedBy" ];
+	"Rhttps://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A780a5cff-6071-47d1-a52f-8f7a60c24625" -> "Rurn:uuid:d248eca5-064f-4ee4-8c8c-59838fa94666" [ label="prov:wasGeneratedBy" ];
+	"Rurn:uuid:d248eca5-064f-4ee4-8c8c-59838fa94666" -> "Rhttps://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A44108e76-405d-4d58-b1b3-fb4b55e3fff9" [ label="prov:used" ];
+	"Rurn:uuid:a4e3b687-fb17-4f37-a185-13d4d59d06f9" -> "Rhttps://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ad31ea97c-e061-43f8-af06-62664671f166" [ label="prov:used" ];
+	"Rurn:uuid:a4e3b687-fb17-4f37-a185-13d4d59d06f9" -> "Rhttps://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Aae595730-172a-43d0-91f8-3173663d7dce" [ label="prov:used" ];
+	"Rurn:uuid:a4e3b687-fb17-4f37-a185-13d4d59d06f9" -> "Rhttps://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A5f57c5d3-65f2-4d46-83f5-67f8104c62dd" [ label="prov:used" ];
+	"Rurn:uuid:a4e3b687-fb17-4f37-a185-13d4d59d06f9" -> "Rhttps://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A5cde46ff-2e8e-4f40-97a1-eb4c4851f22f" [ label="prov:used" ];
+
+	// Resources
+	"Rhttps://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A44108e76-405d-4d58-b1b3-fb4b55e3fff9" [ label="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A44108e76-405d-4d58-b1b3-fb4b55e3fff9", shape = ellipse, color = blue ];
+	"Rurn:uuid:a4e3b687-fb17-4f37-a185-13d4d59d06f9" [ label="urn:uuid:a4e3b687-fb17-4f37-a185-13d4d59d06f9", shape = ellipse, color = blue ];
+	"Rhttps://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ab4b3cc45-4953-43d3-910a-847528577531" [ label="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ab4b3cc45-4953-43d3-910a-847528577531", shape = ellipse, color = blue ];
+	"Rurn:uuid:d248eca5-064f-4ee4-8c8c-59838fa94666" [ label="urn:uuid:d248eca5-064f-4ee4-8c8c-59838fa94666", shape = ellipse, color = blue ];
+	"Rhttps://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A780a5cff-6071-47d1-a52f-8f7a60c24625" [ label="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A780a5cff-6071-47d1-a52f-8f7a60c24625", shape = ellipse, color = blue ];
+	"Rhttps://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ad31ea97c-e061-43f8-af06-62664671f166" [ label="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Ad31ea97c-e061-43f8-af06-62664671f166", shape = ellipse, color = blue ];
+	"Rhttps://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Aae595730-172a-43d0-91f8-3173663d7dce" [ label="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3Aae595730-172a-43d0-91f8-3173663d7dce", shape = ellipse, color = blue ];
+	"Rhttps://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A5f57c5d3-65f2-4d46-83f5-67f8104c62dd" [ label="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A5f57c5d3-65f2-4d46-83f5-67f8104c62dd", shape = ellipse, color = blue ];
+	"Rhttps://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A5cde46ff-2e8e-4f40-97a1-eb4c4851f22f" [ label="https://cn.dataone.org/cn/v2/resolve/urn%3Auuid%3A5cde46ff-2e8e-4f40-97a1-eb4c4851f22f", shape = ellipse, color = blue ];
+
+	// Anonymous nodes
+
+	// Literals
+
+	label="\n\nModel:\n(Unknown)\n\nNamespaces:\ncito: http://purl.org/spar/cito/\ndc: http://purl.org/dc/elements/1.1/\ndcterms: http://purl.org/dc/terms/\nfoaf: http://xmlns.com/foaf/0.1/\nore: http://www.openarchives.org/ore/terms/\nprov: http://www.w3.org/ns/prov#\nprovone: http://purl.dataone.org/provone/2015/01/15/ontology#\nrdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#\nrdfs: http://www.w3.org/2000/01/rdf-schema#\nxsd: http://www.w3.org/2001/XMLSchema#\n";
+}
