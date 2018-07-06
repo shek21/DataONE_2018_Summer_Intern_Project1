@@ -316,6 +316,7 @@ $(document).ready(function () {
 <h5>Create metadata in eml</h5>
 <pre class="r"><code>library(EML)
 
+# create metadata information
 coverage &lt;- set_coverage(beginDate=&quot;2018-07-03&quot;, endDate=&quot;2018-07-20&quot;, 
                          geographicDescription=&quot;Chicago&quot;, 
                          west=-87.623177, east=-87.623177, 
@@ -338,13 +339,17 @@ dataset &lt;- new(&quot;dataset&quot;,
                coverage=coverage, 
                contact=contact)
 eml &lt;- new(&quot;eml&quot;, system=&quot;uuid&quot;, dataset=dataset)
+
+# write it into a file
 write_eml(eml, &quot;./meta.xml&quot;)
+
+# check the written metadata file is valid
 eml_validate(&quot;./meta.xml&quot;)</code></pre>
 <pre><code>## [1] TRUE
 ## attr(,&quot;errors&quot;)
 ## character(0)</code></pre>
 <pre class="r"><code>eml</code></pre>
-<pre><code>## &lt;eml packageId=&quot;801256e6-1fec-428f-a0e6-36e451126c45&quot; system=&quot;uuid&quot; xsi:schemaLocation=&quot;eml://ecoinformatics.org/eml-2.1.1 eml.xsd&quot;&gt;
+<pre><code>## &lt;eml packageId=&quot;d4020125-b4df-4fcb-92b8-83d8f1a9aeb3&quot; system=&quot;uuid&quot; xsi:schemaLocation=&quot;eml://ecoinformatics.org/eml-2.1.1 eml.xsd&quot;&gt;
 ##   &lt;dataset&gt;
 ##     &lt;title&gt;Bundling test for EVOS GoA&lt;/title&gt;
 ##     &lt;creator&gt;
@@ -407,7 +412,7 @@ dp</code></pre>
 <pre><code>## Members:
 ## 
 ## filename   format    mediaType  size     identifier         modified local 
-## meta.xml   eml...1.1 NA         1780     urn:uui...4ea58a60 n        y     
+## meta.xml   eml...1.1 NA         1780     urn:uui...4b1f59fa n        y     
 ## 
 ## Package identifier: NA
 ## RightsHolder: NA
@@ -433,16 +438,16 @@ dp</code></pre>
 <pre><code>## Members:
 ## 
 ## filename        format   mediaType  size     identifier     modified local 
-## new_hcdbSites.R NA       NA         3215     urn:u...92f984 n        y     
-## rp_hcd...OA.png NA       NA         430976   urn:u...4923a5 n        y     
-## Alkane.csv      NA       NA         3932743  urn:u...b81da9 n        y     
-## new_To...lean.R NA       NA         5010     urn:u...49f1ad n        y     
-## rp_hcd...cs.png NA       NA         881168   urn:u...feda2b n        y     
-## Non-EV...Ns.csv NA       NA         3545     urn:u...ce7915 n        y     
-## rp_Tot...WS.csv NA       NA         2795130  urn:u...ee8115 n        y     
-## PAH.csv         NA       NA         5525560  urn:u...382744 n        y     
-## meta.xml        em...1.1 NA         1780     urn:u...a58a60 n        y     
-## Sample.csv      NA       NA         1500015  urn:u...56f8b1 n        y     
+## new_hcdbSites.R NA       NA         3215     urn:u...599744 n        y     
+## rp_hcd...cs.png NA       NA         878319   urn:u...6ee589 n        y     
+## Sample.csv      NA       NA         1500015  urn:u...86d84e n        y     
+## meta.xml        em...1.1 NA         1780     urn:u...1f59fa n        y     
+## new_To...lean.R NA       NA         5010     urn:u...fd5944 n        y     
+## PAH.csv         NA       NA         5525560  urn:u...f4f1e1 n        y     
+## rp_Tot...WS.csv NA       NA         2795130  urn:u...11db89 n        y     
+## Non-EV...Ns.csv NA       NA         3545     urn:u...0da2fb n        y     
+## rp_hcd...OA.png NA       NA         430976   urn:u...806c04 n        y     
+## Alkane.csv      NA       NA         3932743  urn:u...966ce0 n        y     
 ## 
 ## Package identifier: NA
 ## RightsHolder: NA
@@ -453,14 +458,14 @@ dp</code></pre>
 ##                  subject           predicate                object
 ## 2             Alkane.csv cito:isDocumentedBy              meta.xml
 ## 3               meta.xml      cito:documents       new_hcdbSites.R
+## 11              meta.xml      cito:documents rp_hcdbSampleLocs.png
+## 17              meta.xml      cito:documents            Sample.csv
+## 5               meta.xml      cito:documents new_Total...s_Clean.R
+## 9               meta.xml      cito:documents               PAH.csv
+## 15              meta.xml      cito:documents rp_Total_...s_PWS.csv
+## 7               meta.xml      cito:documents     Non-EVOS_SINs.csv
 ## 13              meta.xml      cito:documents rp_hcdbSamplesGOA.png
 ## 1               meta.xml      cito:documents            Alkane.csv
-## 5               meta.xml      cito:documents new_Total...s_Clean.R
-## 11              meta.xml      cito:documents rp_hcdbSampleLocs.png
-## 7               meta.xml      cito:documents     Non-EVOS_SINs.csv
-## 15              meta.xml      cito:documents rp_Total_...s_PWS.csv
-## 9               meta.xml      cito:documents               PAH.csv
-## 17              meta.xml      cito:documents            Sample.csv
 ## 4        new_hcdbSites.R cito:isDocumentedBy              meta.xml
 ## 6  new_Total...s_Clean.R cito:isDocumentedBy              meta.xml
 ## 8      Non-EVOS_SINs.csv cito:isDocumentedBy              meta.xml
@@ -529,7 +534,7 @@ dp</code></pre>
 rc &lt;- new(&quot;Recordr&quot;)</code></pre>
 <pre><code>## A new recordr home directory has been created at:
 ## 
-##  /var/folders/7t/xdmtt00j0w53slb206w9xh100000gn/T//RtmpRPAmai/recordr</code></pre>
+##  /var/folders/7t/xdmtt00j0w53slb206w9xh100000gn/T//Rtmpggiq3T/recordr</code></pre>
 <pre><code>## The recordr package will save run information to this directory, which is under</code></pre>
 <pre><code>## the R session temporary directory. Therefore the information that recordr collects</code></pre>
 <pre><code>## will be removed by R when the current R session ends.</code></pre>
@@ -575,7 +580,7 @@ progFiles</code></pre>
 ## Source: &quot;/Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/bundling/new/GIS&quot;, layer: &quot;statep010&quot;
 ## with 62 features
 ## It has 9 fields</code></pre>
-<pre><code>## Capturing file data for fileId urn:uuid:79ef1d5e-ad38-4382-a17f-4ab8c2b48daa
+<pre><code>## Capturing file data for fileId urn:uuid:d173639a-09fa-4097-80a7-8a1052985e1c
 ## Regions defined for each Polygons</code></pre>
 <pre><code>## 'data.frame':    16960 obs. of  72 variables:
 ##  $ Funding     : Factor w/ 1 level &quot;EVOSTC&quot;: 1 1 1 1 1 1 1 1 1 1 ...
@@ -720,17 +725,49 @@ progFiles</code></pre>
 <h5>List the records</h5>
 <pre class="r"><code>listRuns(rc)</code></pre>
 <pre><code>## Seq   Script                         Tag                  Start Time              
-## 2     /Users/eunjun...arbons_Clean.R new_Total_PAH_and_Al 2018-07-04 22:10:03 CDT 
-## 1     /Users/eunjun...ew_hcdbSites.R new_hcdbSites.R      2018-07-04 22:09:19 CDT</code></pre>
+## 2     /Users/eunjun...arbons_Clean.R new_Total_PAH_and_Al 2018-07-05 16:15:58 CDT 
+## 1     /Users/eunjun...ew_hcdbSites.R new_hcdbSites.R      2018-07-05 16:15:07 CDT</code></pre>
 </div>
 <div id="view-each-record-in-detail" class="section level5">
 <h5>View each record in detail</h5>
-<pre class="r"><code>for(i in length(progFiles)) {
+<pre class="r"><code>for(i in 1:length(progFiles)) {
   viewRuns(rc, seq=i) 
 }</code></pre>
 <pre><code>## [details]: Run details
 ## ----------------------
-## &quot;/Users/eunjungpark/Documents/data...d_Alkanes_GoA_Hydrocarbons_Clean.R&quot; was executed on 2018-07-04 22:10:03 CDT
+## &quot;/Users/eunjungpark/Documents/data...ject1/bundling/new/new_hcdbSites.R&quot; was executed on 2018-07-05 16:15:07 CDT
+## Tag: &quot;new_hcdbSites.R&quot;
+## Run sequence #: 1
+## Publish date: Not published
+## Published to: NA
+## Published Id: NA
+## View at: NA
+## Run by user: eunjungpark
+## Account subject: NA
+## Run Id: urn:uuid:793037f8-6827-4be8-9a3c-1f70184a9133
+## Data package Id: urn:uuid:305fa954-90e7-4aa6-a5f0-10a6efbbef71
+## HostId: eunjeong-bag-ui-MacBook-Pro.local
+## Operating system: x86_64-apple-darwin13.4.0
+## R version: R version 3.3.3 (2017-03-06)
+## Dependencies: stats, graphics, grDevices, utils, datasets, methods, base, hash_2.2.6, Rcpp_0.12.17, knitr_1.18, xml2_1.2.0, magrittr_1.5, roxygen2_6.0.1, rappdirs_0.3.1, bit_1.1-14, uuid_0.1-2, R6_2.2.2, blob_1.1.1, plyr_1.8.4, stringr_1.2.0, httr_1.3.1, tools_3.3.3, redland_1.0.17-9, parsedate_1.1.3, DBI_1.0.0, htmltools_0.3.6, commonmark_1.5, bit64_0.9-7, yaml_2.1.16, rprojroot_1.3-2, digest_0.6.15, base64enc_0.1-3, memoise_1.1.0, RSQLite_2.0, evaluate_0.10.1, rmarkdown_1.10, stringi_1.2.3, backports_1.1.2, XML_3.98-1.9, jsonlite_1.5, pkgconfig_2.0.1, recordr_1.0.3.9000, datapack_1.3.1, dataone_2.1.1, EML_1.0.3
+## Run start time: 2018-07-05 16:15:07 CDT
+## Run end time: 2018-07-05 16:15:57 CDT
+## Error message from this run: NA
+## 
+## [used]: 2 items used by this run
+## -----------------------------------
+## Location                                                     Size (kb)    Modified time      
+## /Users/eunjungpark/Documents...otal_Aromatic_Alkanes_PWS.csv 2795130      2018-07-05 16:09:49
+## /Users/eunjungpark/Documents...undling/new/GIS/statep010.shp 11171920     2018-07-04 21:53:17
+## 
+## [generated]: 2 items generated by this run
+## -----------------------------------------
+## Location                                                     Size (kb)    Modified time      
+## /Users/eunjungpark/Documents...ing/new/rp_hcdbSamplesGOA.png 430976       2018-07-05 16:09:12
+## /Users/eunjungpark/Documents...ing/new/rp_hcdbSampleLocs.png 878319       2018-07-05 16:09:41
+## [details]: Run details
+## ----------------------
+## &quot;/Users/eunjungpark/Documents/data...d_Alkanes_GoA_Hydrocarbons_Clean.R&quot; was executed on 2018-07-05 16:15:58 CDT
 ## Tag: &quot;new_Total_PAH_and_Alkanes_GoA_Hydrocarbons_Clean.R&quot;
 ## Run sequence #: 2
 ## Publish date: Not published
@@ -739,14 +776,14 @@ progFiles</code></pre>
 ## View at: NA
 ## Run by user: eunjungpark
 ## Account subject: NA
-## Run Id: urn:uuid:90798f22-0ab2-482a-8be4-b5e9311bb4c5
-## Data package Id: urn:uuid:312e20f5-e411-43b5-9128-3c0734da124d
+## Run Id: urn:uuid:4fc7b4f5-4df2-44f7-b110-e0f83dc5ca3a
+## Data package Id: urn:uuid:31f71209-9bde-4df5-92b8-597eb35c7e73
 ## HostId: eunjeong-bag-ui-MacBook-Pro.local
 ## Operating system: x86_64-apple-darwin13.4.0
 ## R version: R version 3.3.3 (2017-03-06)
 ## Dependencies: stats, graphics, grDevices, utils, datasets, methods, base, spam_2.1-2, tidyselect_0.2.3, purrr_0.2.5, lattice_0.20-35, colorspace_1.3-2, htmltools_0.3.6, hash_2.2.6, yaml_2.1.16, base64enc_0.1-3, blob_1.1.1, XML_3.98-1.9, rlang_0.2.1, pillar_1.2.3, foreign_0.8-70, glue_1.2.0, withr_2.1.2, DBI_1.0.0, rappdirs_0.3.1, bit64_0.9-7, uuid_0.1-2, plyr_1.8.4, bindr_0.1.1, stringr_1.2.0, dotCall64_0.9-5, fields_9.0, munsell_0.5.0, commonmark_1.5, gtable_0.2.0, mapproj_1.2.6, memoise_1.1.0, evaluate_0.10.1, labeling_0.3, knitr_1.18, maptools_0.9-2, curl_3.2, Rcpp_0.12.17, scales_0.5.0, backports_1.1.2, redland_1.0.17-9, jsonlite_1.5, bit_1.1-14, hms_0.4.2, digest_0.6.15, stringi_1.2.3, parsedate_1.1.3, grid_3.3.3, rprojroot_1.3-2, tools_3.3.3, maps_3.3.0, magrittr_1.5, lazyeval_0.2.1, RSQLite_2.0, tibble_1.4.2, pkgconfig_2.0.1, xml2_1.2.0, assertthat_0.2.0, rmarkdown_1.10, roxygen2_6.0.1, httr_1.3.1, R6_2.2.2, RColorBrewer_1.1-2, rworldxtra_1.01, rworldmap_1.3-6, sp_1.3-1, bindrcpp_0.2.2, dplyr_0.7.6, rgdal_1.3-3, readr_1.1.1, raster_2.6-7, png_0.1-7, ggplot2_3.0.0, recordr_1.0.3.9000, datapack_1.3.1, dataone_2.1.1, EML_1.0.3
-## Run start time: 2018-07-04 22:10:03 CDT
-## Run end time: 2018-07-04 22:10:09 CDT
+## Run start time: 2018-07-05 16:15:58 CDT
+## Run end time: 2018-07-05 16:16:05 CDT
 ## Error message from this run: NA
 ## 
 ## [used]: 4 items used by this run
@@ -760,7 +797,7 @@ progFiles</code></pre>
 ## [generated]: 1 items generated by this run
 ## -----------------------------------------
 ## Location                                                     Size (kb)    Modified time      
-## /Users/eunjungpark/Documents...otal_Aromatic_Alkanes_PWS.csv 2795130      2018-07-04 22:10:09</code></pre>
+## /Users/eunjungpark/Documents...otal_Aromatic_Alkanes_PWS.csv 2795130      2018-07-05 16:16:04</code></pre>
 </div>
 </div>
 <div id="add-the-captured-provenance-into-the-package" class="section level3">
@@ -772,26 +809,35 @@ progFiles</code></pre>
 <li>Generate and add the provenance relationship into the package (using “describeWorkflow”)</li>
 </ul>
 <pre class="r"><code>for(i in 1:length(progFiles)) {
+  # capture file names and access types
   vr &lt;- viewRuns(rc, seq=i)
   vrdf &lt;- setNames(data.frame(basename(vr$files$filePath), vr$files$access), c(&quot;names&quot;,&quot;access&quot;))
   vrUsed &lt;- setNames(subset(vrdf, vrdf$access == &quot;read&quot;), c(&quot;names&quot;,&quot;acess&quot;))
   vrDerived &lt;- setNames(subset(vrdf, vrdf$access == &quot;write&quot;), c(&quot;names&quot;,&quot;acess&quot;))
+  
+  # capture ids for sources (those files used and read)
   sids &lt;- NULL
   for(n in 1:length(vrUsed$names)) {
     sid &lt;- selectMember(dp, name=&quot;sysmeta@fileName&quot;, value=as.character(vrUsed$names[n]))
     sids &lt;- c(sids, sid)
   }
+  
+  # capture ids for outputs (those files derived)
   oids &lt;- NULL
   for(o in 1:length(vrDerived$names)) {
     oid &lt;- selectMember(dp, name=&quot;sysmeta@fileName&quot;, value=as.character(vrDerived$names[o]))
     oids &lt;- c(oids, oid)
   }
+  
+  # capture id for program script
   pid &lt;- selectMember(dp, name=&quot;sysmeta@fileName&quot;, value=progFiles[i])
+  
+  # create provenance relationships
   dp &lt;- describeWorkflow(dp, sources=sids, program=pid, derivations=oids)
 }</code></pre>
 <pre><code>## [details]: Run details
 ## ----------------------
-## &quot;/Users/eunjungpark/Documents/data...ject1/bundling/new/new_hcdbSites.R&quot; was executed on 2018-07-04 22:09:19 CDT
+## &quot;/Users/eunjungpark/Documents/data...ject1/bundling/new/new_hcdbSites.R&quot; was executed on 2018-07-05 16:15:07 CDT
 ## Tag: &quot;new_hcdbSites.R&quot;
 ## Run sequence #: 1
 ## Publish date: Not published
@@ -800,30 +846,30 @@ progFiles</code></pre>
 ## View at: NA
 ## Run by user: eunjungpark
 ## Account subject: NA
-## Run Id: urn:uuid:2f4d5962-4659-4573-b7b2-f85a4af46f94
-## Data package Id: urn:uuid:024c66ea-bbc2-47be-b454-fc26d5f24703
+## Run Id: urn:uuid:793037f8-6827-4be8-9a3c-1f70184a9133
+## Data package Id: urn:uuid:305fa954-90e7-4aa6-a5f0-10a6efbbef71
 ## HostId: eunjeong-bag-ui-MacBook-Pro.local
 ## Operating system: x86_64-apple-darwin13.4.0
 ## R version: R version 3.3.3 (2017-03-06)
 ## Dependencies: stats, graphics, grDevices, utils, datasets, methods, base, hash_2.2.6, Rcpp_0.12.17, knitr_1.18, xml2_1.2.0, magrittr_1.5, roxygen2_6.0.1, rappdirs_0.3.1, bit_1.1-14, uuid_0.1-2, R6_2.2.2, blob_1.1.1, plyr_1.8.4, stringr_1.2.0, httr_1.3.1, tools_3.3.3, redland_1.0.17-9, parsedate_1.1.3, DBI_1.0.0, htmltools_0.3.6, commonmark_1.5, bit64_0.9-7, yaml_2.1.16, rprojroot_1.3-2, digest_0.6.15, base64enc_0.1-3, memoise_1.1.0, RSQLite_2.0, evaluate_0.10.1, rmarkdown_1.10, stringi_1.2.3, backports_1.1.2, XML_3.98-1.9, jsonlite_1.5, pkgconfig_2.0.1, recordr_1.0.3.9000, datapack_1.3.1, dataone_2.1.1, EML_1.0.3
-## Run start time: 2018-07-04 22:09:19 CDT
-## Run end time: 2018-07-04 22:10:02 CDT
+## Run start time: 2018-07-05 16:15:07 CDT
+## Run end time: 2018-07-05 16:15:57 CDT
 ## Error message from this run: NA
 ## 
 ## [used]: 2 items used by this run
 ## -----------------------------------
 ## Location                                                     Size (kb)    Modified time      
-## /Users/eunjungpark/Documents...otal_Aromatic_Alkanes_PWS.csv 2795130      2018-07-04 22:06:33
+## /Users/eunjungpark/Documents...otal_Aromatic_Alkanes_PWS.csv 2795130      2018-07-05 16:09:49
 ## /Users/eunjungpark/Documents...undling/new/GIS/statep010.shp 11171920     2018-07-04 21:53:17
 ## 
 ## [generated]: 2 items generated by this run
 ## -----------------------------------------
 ## Location                                                     Size (kb)    Modified time      
-## /Users/eunjungpark/Documents...ing/new/rp_hcdbSamplesGOA.png 430976       2018-07-04 22:06:10
-## /Users/eunjungpark/Documents...ing/new/rp_hcdbSampleLocs.png 881168       2018-07-03 16:09:02
+## /Users/eunjungpark/Documents...ing/new/rp_hcdbSamplesGOA.png 430976       2018-07-05 16:09:12
+## /Users/eunjungpark/Documents...ing/new/rp_hcdbSampleLocs.png 878319       2018-07-05 16:09:41
 ## [details]: Run details
 ## ----------------------
-## &quot;/Users/eunjungpark/Documents/data...d_Alkanes_GoA_Hydrocarbons_Clean.R&quot; was executed on 2018-07-04 22:10:03 CDT
+## &quot;/Users/eunjungpark/Documents/data...d_Alkanes_GoA_Hydrocarbons_Clean.R&quot; was executed on 2018-07-05 16:15:58 CDT
 ## Tag: &quot;new_Total_PAH_and_Alkanes_GoA_Hydrocarbons_Clean.R&quot;
 ## Run sequence #: 2
 ## Publish date: Not published
@@ -832,14 +878,14 @@ progFiles</code></pre>
 ## View at: NA
 ## Run by user: eunjungpark
 ## Account subject: NA
-## Run Id: urn:uuid:90798f22-0ab2-482a-8be4-b5e9311bb4c5
-## Data package Id: urn:uuid:312e20f5-e411-43b5-9128-3c0734da124d
+## Run Id: urn:uuid:4fc7b4f5-4df2-44f7-b110-e0f83dc5ca3a
+## Data package Id: urn:uuid:31f71209-9bde-4df5-92b8-597eb35c7e73
 ## HostId: eunjeong-bag-ui-MacBook-Pro.local
 ## Operating system: x86_64-apple-darwin13.4.0
 ## R version: R version 3.3.3 (2017-03-06)
 ## Dependencies: stats, graphics, grDevices, utils, datasets, methods, base, spam_2.1-2, tidyselect_0.2.3, purrr_0.2.5, lattice_0.20-35, colorspace_1.3-2, htmltools_0.3.6, hash_2.2.6, yaml_2.1.16, base64enc_0.1-3, blob_1.1.1, XML_3.98-1.9, rlang_0.2.1, pillar_1.2.3, foreign_0.8-70, glue_1.2.0, withr_2.1.2, DBI_1.0.0, rappdirs_0.3.1, bit64_0.9-7, uuid_0.1-2, plyr_1.8.4, bindr_0.1.1, stringr_1.2.0, dotCall64_0.9-5, fields_9.0, munsell_0.5.0, commonmark_1.5, gtable_0.2.0, mapproj_1.2.6, memoise_1.1.0, evaluate_0.10.1, labeling_0.3, knitr_1.18, maptools_0.9-2, curl_3.2, Rcpp_0.12.17, scales_0.5.0, backports_1.1.2, redland_1.0.17-9, jsonlite_1.5, bit_1.1-14, hms_0.4.2, digest_0.6.15, stringi_1.2.3, parsedate_1.1.3, grid_3.3.3, rprojroot_1.3-2, tools_3.3.3, maps_3.3.0, magrittr_1.5, lazyeval_0.2.1, RSQLite_2.0, tibble_1.4.2, pkgconfig_2.0.1, xml2_1.2.0, assertthat_0.2.0, rmarkdown_1.10, roxygen2_6.0.1, httr_1.3.1, R6_2.2.2, RColorBrewer_1.1-2, rworldxtra_1.01, rworldmap_1.3-6, sp_1.3-1, bindrcpp_0.2.2, dplyr_0.7.6, rgdal_1.3-3, readr_1.1.1, raster_2.6-7, png_0.1-7, ggplot2_3.0.0, recordr_1.0.3.9000, datapack_1.3.1, dataone_2.1.1, EML_1.0.3
-## Run start time: 2018-07-04 22:10:03 CDT
-## Run end time: 2018-07-04 22:10:09 CDT
+## Run start time: 2018-07-05 16:15:58 CDT
+## Run end time: 2018-07-05 16:16:05 CDT
 ## Error message from this run: NA
 ## 
 ## [used]: 4 items used by this run
@@ -853,21 +899,21 @@ progFiles</code></pre>
 ## [generated]: 1 items generated by this run
 ## -----------------------------------------
 ## Location                                                     Size (kb)    Modified time      
-## /Users/eunjungpark/Documents...otal_Aromatic_Alkanes_PWS.csv 2795130      2018-07-04 22:10:09</code></pre>
+## /Users/eunjungpark/Documents...otal_Aromatic_Alkanes_PWS.csv 2795130      2018-07-05 16:16:04</code></pre>
 <pre class="r"><code>dp</code></pre>
 <pre><code>## Members:
 ## 
 ## filename        format   mediaType  size     identifier     modified local 
-## new_hcdbSites.R NA       NA         3215     urn:u...92f984 n        y     
-## rp_hcd...OA.png NA       NA         430976   urn:u...4923a5 n        y     
-## Alkane.csv      NA       NA         3932743  urn:u...b81da9 n        y     
-## new_To...lean.R NA       NA         5010     urn:u...49f1ad n        y     
-## rp_hcd...cs.png NA       NA         881168   urn:u...feda2b n        y     
-## Non-EV...Ns.csv NA       NA         3545     urn:u...ce7915 n        y     
-## rp_Tot...WS.csv NA       NA         2795130  urn:u...ee8115 n        y     
-## PAH.csv         NA       NA         5525560  urn:u...382744 n        y     
-## meta.xml        em...1.1 NA         1780     urn:u...a58a60 n        y     
-## Sample.csv      NA       NA         1500015  urn:u...56f8b1 n        y     
+## new_hcdbSites.R NA       NA         3215     urn:u...599744 n        y     
+## rp_hcd...cs.png NA       NA         878319   urn:u...6ee589 n        y     
+## Sample.csv      NA       NA         1500015  urn:u...86d84e n        y     
+## meta.xml        em...1.1 NA         1780     urn:u...1f59fa n        y     
+## new_To...lean.R NA       NA         5010     urn:u...fd5944 n        y     
+## PAH.csv         NA       NA         5525560  urn:u...f4f1e1 n        y     
+## rp_Tot...WS.csv NA       NA         2795130  urn:u...11db89 n        y     
+## Non-EV...Ns.csv NA       NA         3545     urn:u...0da2fb n        y     
+## rp_hcd...OA.png NA       NA         430976   urn:u...806c04 n        y     
+## Alkane.csv      NA       NA         3932743  urn:u...966ce0 n        y     
 ## 
 ## Package identifier: NA
 ## RightsHolder: NA
@@ -876,21 +922,21 @@ progFiles</code></pre>
 ## Relationships (updated):
 ## 
 ##                  subject             predicate                object
-## 25 _c6ca9994...e8770f7c2              rdf:type      prov:Association
-## 24 _c6ca9994...e8770f7c2          prov:hadPlan       new_hcdbSites.R
-## 40 _c9407bea...33e7be969              rdf:type      prov:Association
-## 39 _c9407bea...33e7be969          prov:hadPlan new_Total...s_Clean.R
+## 25 _9e565f6e...d138dc634              rdf:type      prov:Association
+## 24 _9e565f6e...d138dc634          prov:hadPlan       new_hcdbSites.R
+## 40 _dc6d85c9...4608cbed1              rdf:type      prov:Association
+## 39 _dc6d85c9...4608cbed1          prov:hadPlan new_Total...s_Clean.R
 ## 2             Alkane.csv   cito:isDocumentedBy              meta.xml
 ## 34            Alkane.csv              rdf:type          provone:Data
 ## 3               meta.xml        cito:documents       new_hcdbSites.R
+## 11              meta.xml        cito:documents rp_hcdbSampleLocs.png
+## 17              meta.xml        cito:documents            Sample.csv
+## 5               meta.xml        cito:documents new_Total...s_Clean.R
+## 9               meta.xml        cito:documents               PAH.csv
+## 15              meta.xml        cito:documents rp_Total_...s_PWS.csv
+## 7               meta.xml        cito:documents     Non-EVOS_SINs.csv
 ## 13              meta.xml        cito:documents rp_hcdbSamplesGOA.png
 ## 1               meta.xml        cito:documents            Alkane.csv
-## 5               meta.xml        cito:documents new_Total...s_Clean.R
-## 11              meta.xml        cito:documents rp_hcdbSampleLocs.png
-## 7               meta.xml        cito:documents     Non-EVOS_SINs.csv
-## 15              meta.xml        cito:documents rp_Total_...s_PWS.csv
-## 9               meta.xml        cito:documents               PAH.csv
-## 17              meta.xml        cito:documents            Sample.csv
 ## 4        new_hcdbSites.R   cito:isDocumentedBy              meta.xml
 ## 26       new_hcdbSites.R              rdf:type       provone:Program
 ## 6  new_Total...s_Clean.R   cito:isDocumentedBy              meta.xml
@@ -902,31 +948,31 @@ progFiles</code></pre>
 ## 12 rp_hcdbSampleLocs.png   cito:isDocumentedBy              meta.xml
 ## 21 rp_hcdbSampleLocs.png              rdf:type          provone:Data
 ## 32 rp_hcdbSampleLocs.png   prov:wasDerivedFrom rp_Total_...s_PWS.csv
-## 30 rp_hcdbSampleLocs.png   prov:wasGeneratedBy urn:uuid:...7f183c3be
+## 30 rp_hcdbSampleLocs.png   prov:wasGeneratedBy urn:uuid:...2197854eb
 ## 14 rp_hcdbSamplesGOA.png   cito:isDocumentedBy              meta.xml
 ## 20 rp_hcdbSamplesGOA.png              rdf:type          provone:Data
 ## 31 rp_hcdbSamplesGOA.png   prov:wasDerivedFrom rp_Total_...s_PWS.csv
-## 29 rp_hcdbSamplesGOA.png   prov:wasGeneratedBy urn:uuid:...7f183c3be
+## 29 rp_hcdbSamplesGOA.png   prov:wasGeneratedBy urn:uuid:...2197854eb
 ## 16 rp_Total_...s_PWS.csv   cito:isDocumentedBy              meta.xml
 ## 19 rp_Total_...s_PWS.csv              rdf:type          provone:Data
-## 49 rp_Total_...s_PWS.csv   prov:wasDerivedFrom            Alkane.csv
-## 51 rp_Total_...s_PWS.csv   prov:wasDerivedFrom     Non-EVOS_SINs.csv
-## 48 rp_Total_...s_PWS.csv   prov:wasDerivedFrom               PAH.csv
 ## 50 rp_Total_...s_PWS.csv   prov:wasDerivedFrom            Sample.csv
-## 47 rp_Total_...s_PWS.csv   prov:wasGeneratedBy urn:uuid:...16371783e
+## 48 rp_Total_...s_PWS.csv   prov:wasDerivedFrom               PAH.csv
+## 51 rp_Total_...s_PWS.csv   prov:wasDerivedFrom     Non-EVOS_SINs.csv
+## 49 rp_Total_...s_PWS.csv   prov:wasDerivedFrom            Alkane.csv
+## 47 rp_Total_...s_PWS.csv   prov:wasGeneratedBy urn:uuid:...7434b971f
 ## 18            Sample.csv   cito:isDocumentedBy              meta.xml
 ## 35            Sample.csv              rdf:type          provone:Data
-## 42 urn:uuid:...16371783e    dcterms:identifier urn:uuid:...16371783e
-## 38 urn:uuid:...16371783e              rdf:type     provone:Execution
-## 37 urn:uuid:...16371783e prov:qual...sociation _c9407bea...33e7be969
-## 44 urn:uuid:...16371783e             prov:used            Alkane.csv
-## 46 urn:uuid:...16371783e             prov:used     Non-EVOS_SINs.csv
-## 43 urn:uuid:...16371783e             prov:used               PAH.csv
-## 45 urn:uuid:...16371783e             prov:used            Sample.csv
-## 27 urn:uuid:...7f183c3be    dcterms:identifier urn:uuid:...7f183c3be
-## 23 urn:uuid:...7f183c3be              rdf:type     provone:Execution
-## 22 urn:uuid:...7f183c3be prov:qual...sociation _c6ca9994...e8770f7c2
-## 28 urn:uuid:...7f183c3be             prov:used rp_Total_...s_PWS.csv</code></pre>
+## 27 urn:uuid:...2197854eb    dcterms:identifier urn:uuid:...2197854eb
+## 23 urn:uuid:...2197854eb              rdf:type     provone:Execution
+## 22 urn:uuid:...2197854eb prov:qual...sociation _9e565f6e...d138dc634
+## 28 urn:uuid:...2197854eb             prov:used rp_Total_...s_PWS.csv
+## 42 urn:uuid:...7434b971f    dcterms:identifier urn:uuid:...7434b971f
+## 38 urn:uuid:...7434b971f              rdf:type     provone:Execution
+## 37 urn:uuid:...7434b971f prov:qual...sociation _dc6d85c9...4608cbed1
+## 45 urn:uuid:...7434b971f             prov:used            Sample.csv
+## 43 urn:uuid:...7434b971f             prov:used               PAH.csv
+## 46 urn:uuid:...7434b971f             prov:used     Non-EVOS_SINs.csv
+## 44 urn:uuid:...7434b971f             prov:used            Alkane.csv</code></pre>
 </div>
 <div id="publish-the-package-to-dataone" class="section level3">
 <h3>Publish the package to DataONE</h3>

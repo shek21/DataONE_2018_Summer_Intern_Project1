@@ -15,6 +15,7 @@ knitr::opts_knit$set(root.dir = "/Users/eunjungpark/Documents/dataone/DataONE_20
 ```{r}
 library(EML)
 
+# create metadata information
 coverage <- set_coverage(beginDate="2018-07-03", endDate="2018-07-20", 
                          geographicDescription="Chicago", 
                          west=-87.623177, east=-87.623177, 
@@ -37,8 +38,13 @@ dataset <- new("dataset",
                coverage=coverage, 
                contact=contact)
 eml <- new("eml", system="uuid", dataset=dataset)
+
+# write it into a file
 write_eml(eml, "./meta.xml")
+
+# check the written metadata file is valid
 eml_validate("./meta.xml")
+
 eml
 ```
 
@@ -149,7 +155,7 @@ listRuns(rc)
 
 ##### View each record in detail
 ```{r}
-for(i in length(progFiles)) {
+for(i in 1:length(progFiles)) {
   viewRuns(rc, seq=i) 
 }
 ```
@@ -162,21 +168,30 @@ for(i in length(progFiles)) {
 + Generate and add the provenance relationship into the package (using "describeWorkflow")
 ```{r}
 for(i in 1:length(progFiles)) {
+  # capture file names and access types
   vr <- viewRuns(rc, seq=i)
   vrdf <- setNames(data.frame(basename(vr$files$filePath), vr$files$access), c("names","access"))
   vrUsed <- setNames(subset(vrdf, vrdf$access == "read"), c("names","acess"))
   vrDerived <- setNames(subset(vrdf, vrdf$access == "write"), c("names","acess"))
+  
+  # capture ids for sources (those files used and read)
   sids <- NULL
   for(n in 1:length(vrUsed$names)) {
     sid <- selectMember(dp, name="sysmeta@fileName", value=as.character(vrUsed$names[n]))
     sids <- c(sids, sid)
   }
+  
+  # capture ids for outputs (those files derived)
   oids <- NULL
   for(o in 1:length(vrDerived$names)) {
     oid <- selectMember(dp, name="sysmeta@fileName", value=as.character(vrDerived$names[o]))
     oids <- c(oids, oid)
   }
+  
+  # capture id for program script
   pid <- selectMember(dp, name="sysmeta@fileName", value=progFiles[i])
+  
+  # create provenance relationships
   dp <- describeWorkflow(dp, sources=sids, program=pid, derivations=oids)
 }
 

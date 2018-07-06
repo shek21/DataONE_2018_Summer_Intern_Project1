@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packageId="05f3bc40-8016-436f-b007-dfbd140a726c" system="uuid" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 eml.xsd">
+<eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packageId="316f22d3-9f95-4c75-93ba-ae6864ae5fde" system="uuid" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 eml.xsd">
   <dataset>
     <title>Bundling test for EVOS GoA</title>
     <creator>

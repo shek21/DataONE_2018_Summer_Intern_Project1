@@ -105,11 +105,38 @@ rdf
 ```
 
 ```{r}
-system("rapper --output dot /Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency/results/provSimp.rdfxml > /Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency/results/provSimp.dot")
-system("dot -Tpdf /Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency/results/provSimp.dot > /Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency/results/provSimp.pdf")
+system("rapper --output dot ./results/provSimp.rdfxml > ./results/provSimp.dot")
+system("dot -Tpdf ./results/provSimp.dot > ./results/provSimp.pdf")
 ```
 ```{r, out.width="950px", out.height="600px"}
 knitr::include_graphics("./results/provSimp.pdf")
+```
+
+
+```{r}
+provNoPred <- provSimp
+indx <- match(provNoPred$predicate, "prov:wasGeneratedBy", nomatch = 0)
+provNoPred$predicate[indx != 0] <- "prov:generated"
+indx <- match(provNoPred$predicate, "prov:used", nomatch = 0)
+provNoPred$predicate[indx != 0] <- "prov:wasUsedBy"
+provNoPred <- data.frame(lapply(provNoPred, as.character), stringsAsFactors=FALSE)
+provNoPred
+```
+
+```{r}
+rdfSimp <- rdf()
+for (i in 1:nrow(provNoPred)) rdf_add(rdfSimp, provNoPred$object[i], provNoPred$predicate[i], provNoPred$subject[i], subjectType="uri", objectType="uri")
+options(rdf_print_format = "rdfxml")
+rdf_serialize(rdfSimp, "./results/provTest.rdfxml")
+rdf
+```
+
+```{r}
+system("rapper --output dot ./results/provTest.rdfxml > ./results/provSimp.dot")
+system("dot -Tpdf ./results/provTest.dot > ./results/provTest.pdf")
+```
+```{r, out.width="950px", out.height="600px"}
+knitr::include_graphics("./results/provTest.pdf")
 ```
 
 
