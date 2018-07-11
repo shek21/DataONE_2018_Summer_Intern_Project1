@@ -38,9 +38,9 @@ library(rdflib)
 rdfSimp <- rdf()
 for (i in 1:nrow(provSimp)) rdf_add(rdfSimp, provSimp$object[i], provSimp$predicate[i], provSimp$subject[i], subjectType="uri", objectType="uri")
 options(rdf_print_format = "rdfxml")
-#rdf_serialize(rdfSimp, "./provSimp.rdfxml")
+rdf_serialize(rdfSimp, "../../../provSimp.rdfxml")
 print(rdfSimp)
 
 # Generate YesWorkflow
-#system("java -jar ../yw_jar/yesworkflow-0.2.1-SNAPSHOT-jar-with-dependencies.jar graph ../yw/aoos.R -c graph.view=combined -c graph.layout=tb > ../yw/aoos.dot")
-#system("dot -Tpdf ../yw/aoos.dot > ../yw/aoos.pdf")
+system("java -jar ../yw_jar/yesworkflow-0.2.1-SNAPSHOT-jar-with-dependencies.jar graph ../yw/aoos.R -c graph.view=combined -c graph.layout=tb > ../../../aoos.dot")
+system("dot -Tpdf ../../../aoos.dot > ../../../aoos.pdf")

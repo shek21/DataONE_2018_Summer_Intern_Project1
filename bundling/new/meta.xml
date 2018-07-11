@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packageId="316f22d3-9f95-4c75-93ba-ae6864ae5fde" system="uuid" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 eml.xsd">
+<eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packageId="568db564-335b-4355-a2b8-3bbfaa167f29" system="uuid" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 eml.xsd">
   <dataset>
     <title>Bundling test for EVOS GoA</title>
     <creator>
@@ -41,5 +41,176 @@
       <phone>000-000-0000</phone>
       <electronicMailAddress>slee195@hawk.iit.edu</electronicMailAddress>
     </contact>
+    <otherEntity id="urn:uuid:e7a7ec32-cfec-4130-974a-458e7a66ec82" scope="document">
+      <entityName>Alkane.csv</entityName>
+      <physical scope="document">
+        <objectName>Alkane.csv</objectName>
+        <size unit="bytes">3932743</size>
+        <authentication method="SHA-1">82afbae4ebec41c7dbece20800699b755af90ebd</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>text/csv</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:e7a7ec32-cfec-4130-974a-458e7a66ec82</url>
+          </online>
+        </distribution>
+      </physical>
+      <entityType>Other</entityType>
+    </otherEntity>
+    <otherEntity id="urn:uuid:4d5e268d-7558-45f0-9d5a-865371933f4a" scope="document">
+      <entityName>new_hcdbSites.R</entityName>
+      <physical scope="document">
+        <objectName>new_hcdbSites.R</objectName>
+        <size unit="bytes">3215</size>
+        <authentication method="SHA-1">81ffa9b9c016bc0e2072f84b50a5f51cfc7b8813</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>application/octet-stream</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:4d5e268d-7558-45f0-9d5a-865371933f4a</url>
+          </online>
+        </distribution>
+      </physical>
+      <entityType>Other</entityType>
+    </otherEntity>
+    <otherEntity id="urn:uuid:dccd1206-8281-4825-baf7-0f62d4f35083" scope="document">
+      <entityName>new_Total_PAH_and_Alkanes_GoA_Hydrocarbons_Clean.R</entityName>
+      <physical scope="document">
+        <objectName>new_Total_PAH_and_Alkanes_GoA_Hydrocarbons_Clean.R</objectName>
+        <size unit="bytes">5010</size>
+        <authentication method="SHA-1">8f0cf927368e3ce2e178e94ab428c6ee31059f5e</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>application/octet-stream</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:dccd1206-8281-4825-baf7-0f62d4f35083</url>
+          </online>
+        </distribution>
+      </physical>
+      <entityType>Other</entityType>
+    </otherEntity>
+    <otherEntity id="urn:uuid:3e0f14c0-f270-459a-a880-105e808e0866" scope="document">
+      <entityName>Non-EVOS_SINs.csv</entityName>
+      <physical scope="document">
+        <objectName>Non-EVOS_SINs.csv</objectName>
+        <size unit="bytes">3545</size>
+        <authentication method="SHA-1">9d901148ece56fd1d94bcb342dff62f6e223f033</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>text/csv</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:3e0f14c0-f270-459a-a880-105e808e0866</url>
+          </online>
+        </distribution>
+      </physical>
+      <entityType>Other</entityType>
+    </otherEntity>
+    <otherEntity id="urn:uuid:a353a08f-dabd-4c1d-8856-7ce207d65ef2" scope="document">
+      <entityName>PAH.csv</entityName>
+      <physical scope="document">
+        <objectName>PAH.csv</objectName>
+        <size unit="bytes">5525560</size>
+        <authentication method="SHA-1">9d33d7d966314577e4025330dffc6c4c4adcf5eb</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>text/csv</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:a353a08f-dabd-4c1d-8856-7ce207d65ef2</url>
+          </online>
+        </distribution>
+      </physical>
+      <entityType>Other</entityType>
+    </otherEntity>
+    <otherEntity id="urn:uuid:3045ebc1-8986-4abb-925c-fe3217cfe478" scope="document">
+      <entityName>rp_hcdbSampleLocs.png</entityName>
+      <physical scope="document">
+        <objectName>rp_hcdbSampleLocs.png</objectName>
+        <size unit="bytes">878319</size>
+        <authentication method="SHA-1">7cebaf157b00ab8060b53bb64a8ab15286a21cfc</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>image/png</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:3045ebc1-8986-4abb-925c-fe3217cfe478</url>
+          </online>
+        </distribution>
+      </physical>
+      <entityType>Other</entityType>
+    </otherEntity>
+    <otherEntity id="urn:uuid:1e920c89-9b06-4654-9073-bb1b1d3b0059" scope="document">
+      <entityName>rp_hcdbSamplesGOA.png</entityName>
+      <physical scope="document">
+        <objectName>rp_hcdbSamplesGOA.png</objectName>
+        <size unit="bytes">430976</size>
+        <authentication method="SHA-1">151ea34041e72fe28160a9be154f09463cc8eaef</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>image/png</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:1e920c89-9b06-4654-9073-bb1b1d3b0059</url>
+          </online>
+        </distribution>
+      </physical>
+      <entityType>Other</entityType>
+    </otherEntity>
+    <otherEntity id="urn:uuid:cf02115f-2db2-4e02-b40b-7a4811595954" scope="document">
+      <entityName>rp_Total_Aromatic_Alkanes_PWS.csv</entityName>
+      <physical scope="document">
+        <objectName>rp_Total_Aromatic_Alkanes_PWS.csv</objectName>
+        <size unit="bytes">2795130</size>
+        <authentication method="SHA-1">52d5d2aeccc9787a35a95bb994f733b693d7a1cb</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>text/csv</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:cf02115f-2db2-4e02-b40b-7a4811595954</url>
+          </online>
+        </distribution>
+      </physical>
+      <entityType>Other</entityType>
+    </otherEntity>
+    <otherEntity id="urn:uuid:9aea17e4-886f-4b8e-95b8-cb9cdb5100d6" scope="document">
+      <entityName>Sample.csv</entityName>
+      <physical scope="document">
+        <objectName>Sample.csv</objectName>
+        <size unit="bytes">1500015</size>
+        <authentication method="SHA-1">b1d5b49a4fdd25fe55859e9e4f3373bc830237f7</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>text/csv</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:9aea17e4-886f-4b8e-95b8-cb9cdb5100d6</url>
+          </online>
+        </distribution>
+      </physical>
+      <entityType>Other</entityType>
+    </otherEntity>
   </dataset>
 </eml:eml>

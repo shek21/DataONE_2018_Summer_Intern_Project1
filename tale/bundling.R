@@ -31,6 +31,27 @@ for(o in flists) {
 print(dp)
 
 
+# add otherEntity
+library(arcticdatautils)
+
+pids <- NULL
+for(i in 1:length(flists)) {
+  pid <- selectMember(dp, name="sysmeta@fileName", value=flists[i])
+  pids <- c(pids, pid)
+  flists[i] <- paste("./", flists[i], sep="")
+}
+entity_df <- data.frame(type="otherEntity", path=flists, pid=pids, format_id=guess_format_id(flists), stringsAsFactors=FALSE)
+eml <- eml_add_entities(eml, entity_df)
+write_eml(eml, "./meta.xml")
+eml_validate("./meta.xml")
+print(eml)
+
+
+# replace metadata file in the package
+dp <- replaceMember(dp, metadataObj, replacement="./meta.xml", formatId="eml://ecoinformatics.org/eml-2.1.1")
+print(dp)
+
+
 # Initialize recordr
 #devtools::install_github("nceas/recordr")
 library(recordr)
