@@ -32,7 +32,7 @@ print(dp)
 
 
 # add otherEntity
-#devtools::install_github("nceas/arcticdatautils")
+devtools::install_github("nceas/arcticdatautils")
 library(arcticdatautils)
 
 pids <- NULL
@@ -54,7 +54,7 @@ print(dp)
 
 
 # Initialize recordr
-#devtools::install_github("nceas/recordr")
+devtools::install_github("nceas/recordr")
 library(recordr)
 rc <- new("Recordr")
 
@@ -65,32 +65,34 @@ for(i in progFiles) {
 }
 
 # Add provenance into the package
-for(i in 1:length(progFiles)) {
-  # capture file names and access types
-  vr <- viewRuns(rc, seq=i)
-  vrdf <- setNames(data.frame(basename(vr$files$filePath), vr$files$access), c("names","access"))
-  vrUsed <- setNames(subset(vrdf, vrdf$access == "read"), c("names","acess"))
-  vrDerived <- setNames(subset(vrdf, vrdf$access == "write"), c("names","acess"))
-  
-  # capture ids for sources (those files used and read)
-  sids <- NULL
-  for(n in 1:length(vrUsed$names)) {
-    sid <- selectMember(dp, name="sysmeta@fileName", value=as.character(vrUsed$names[n]))
-    sids <- c(sids, sid)
-  }
-  
-  # capture ids for outputs (those files derived)
-  oids <- NULL
-  for(o in 1:length(vrDerived$names)) {
-    oid <- selectMember(dp, name="sysmeta@fileName", value=as.character(vrDerived$names[o]))
-    oids <- c(oids, oid)
-  }
-  
-  # capture id for program script
-  pid <- selectMember(dp, name="sysmeta@fileName", value=progFiles[i])
-  
-  # create provenance relationships
-  dp <- describeWorkflow(dp, sources=sids, program=pid, derivations=oids)
+if(length(progFiles) > 0) {
+   for(i in 1:length(progFiles)) {
+     # capture file names and access types
+     vr <- viewRuns(rc, seq=i)
+     vrdf <- setNames(data.frame(basename(vr$files$filePath), vr$files$access), c("names","access"))
+     vrUsed <- setNames(subset(vrdf, vrdf$access == "read"), c("names","acess"))
+     vrDerived <- setNames(subset(vrdf, vrdf$access == "write"), c("names","acess"))
+     
+     # capture ids for sources (those files used and read)
+     sids <- NULL
+     for(n in 1:length(vrUsed$names)) {
+       sid <- selectMember(dp, name="sysmeta@fileName", value=as.character(vrUsed$names[n]))
+       sids <- c(sids, sid)
+     }
+     
+     # capture ids for outputs (those files derived)
+     oids <- NULL
+     for(o in 1:length(vrDerived$names)) {
+       oid <- selectMember(dp, name="sysmeta@fileName", value=as.character(vrDerived$names[o]))
+       oids <- c(oids, oid)
+     }
+     
+     # capture id for program script
+     pid <- selectMember(dp, name="sysmeta@fileName", value=progFiles[i])
+     
+     # create provenance relationships
+     dp <- describeWorkflow(dp, sources=sids, program=pid, derivations=oids)
+   }
 }
 
 print(dp)
