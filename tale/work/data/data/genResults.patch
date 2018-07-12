@@ -1,5 +1,5 @@
 --- hcdbSites.R	2018-07-05 20:43:58.000000000 -0500
-+++ ../scripts/new_hcdbSites.R	2018-07-10 17:04:44.000000000 -0500
++++ ../scripts/new_hcdbSites.R	2018-07-11 15:08:28.000000000 -0500
 @@ -5,15 +5,16 @@
  library(dplyr)
  
@@ -34,7 +34,7 @@
    xlab('lon')+
    theme(axis.line=element_line(),
          panel.grid.major = element_blank(),
-@@ -48,20 +49,22 @@
+@@ -48,20 +49,24 @@
          axis.text=element_text(size=14),
          title=element_text(size=16,face="bold"))+
    guides(colour = guide_legend(override.aes = list(size=6)))
@@ -46,16 +46,17 @@
 -tempFilename <- 'akMapData.zip'
 -akMapObject=getD1Object(cli,'df35d.431.1')  ## shp file from dataONE
 -akMapData <- getData(akMapObject, fileName=tempFilename)
-+tempFilename <- "../../../shape.zip"
++setwd("../../../")
++tempFilename <- "shape.zip"
 +akMapObject=getDataObject(cli,'df35d.431.1')  ## shp file from dataONE
 +akMapData <- getData(akMapObject)
-+writeBin(akMapData,"../../../shape")
-+file.rename("../../../shape",tempFilename)
++writeBin(akMapData,"shape")
++file.rename("shape",tempFilename)
  unzip(tempFilename, list=FALSE) ### ERRORS, not sure why, line 21: Error in name == "GADM" : comparison (1) is possible only for atomic and list types
  
--state <- readOGR('GIS','statep010')
-+state <- readOGR('../../../GIS','statep010')
+ state <- readOGR('GIS','statep010')
  stateDf=fortify(state)
++setwd("work/data/data/")
  
  ## Colors:
 -library('rColorBrewer')
@@ -63,7 +64,7 @@
  
  
  ggplot(data=stateDf, aes(y=lat, x=lon)) +
-@@ -70,7 +73,7 @@
+@@ -70,7 +75,7 @@
    #scale_fill_manual(values=colMap)+
    geom_point(data=hcdb, aes(x=as.numeric(LONG), y=as.numeric(LAT),colour=matrix), size=2, shape=20,alpha=0.75) + 
    scale_colour_brewer(palette='Set1',name='Sample type')+#,breaks=cnLevels,labels=cnLevels
@@ -72,7 +73,7 @@
    theme(axis.line=element_line('black'),
          panel.grid.major = element_blank(),
          panel.grid.minor = element_blank(),
-@@ -80,7 +83,7 @@
+@@ -80,7 +85,7 @@
          axis.text=element_text(size=14),
          title=element_text(size=16,face="bold"))+
    guides(colour = guide_legend(override.aes = list(size=6)))

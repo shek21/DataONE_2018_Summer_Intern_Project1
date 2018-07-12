@@ -33,7 +33,7 @@ provSimp <- data.frame(lapply(provSimp, as.character), stringsAsFactors=FALSE)
 print(provSimp)
 
 # Create RDF
-#install.packages("rdflib")
+install.packages("rdflib")
 library(rdflib)
 rdfSimp <- rdf()
 for (i in 1:nrow(provSimp)) rdf_add(rdfSimp, provSimp$object[i], provSimp$predicate[i], provSimp$subject[i], subjectType="uri", objectType="uri")

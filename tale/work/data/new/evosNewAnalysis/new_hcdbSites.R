@@ -7,7 +7,7 @@ library(dplyr)
 ## Initialize a client to interact with DataONE
 cli <- D1Client("PROD", "urn:node:GOA")
 
-hcdb=read.csv("../../../rp_Total_Aromatic_Alkanes_PWS.csv",header=T)
+hcdb=read.csv("rp_Total_Aromatic_Alkanes_PWS.csv",header=T)
 hcdb=hcdb %>%
   mutate(matr2=tolower(matrix)) %>%
   filter(!matr2=='fblank') %>%
@@ -17,7 +17,6 @@ hcdb=hcdb %>%
   filter(!matrix=='') 
   
 ### mapping
-
 library(rworldmap)
 library(rworldxtra)
 library(rgdal)
@@ -49,16 +48,16 @@ ggplot(data=fWorld) +
         axis.text=element_text(size=14),
         title=element_text(size=16,face="bold"))+
   guides(colour = guide_legend(override.aes = list(size=6)))
-ggsave("../../../rp_hcdbSamplesGOA.png", width=12, height=8)
+ggsave("rp_hcdbSamplesGOA.png", width=12, height=8)
 
 
-### ZOOOOOM in:
-tempFilename <- "../../../shape.zip"
-akMapObject=getDataObject(cli,'df35d.431.1')  ## shp file from dataONE
-akMapData <- getData(akMapObject)
-writeBin(akMapData,"../../../shape")
-file.rename("../../../shape",tempFilename)
-unzip(tempFilename, list=FALSE) ### ERRORS, not sure why, line 21: Error in name == "GADM" : comparison (1) is possible only for atomic and list types
+#### ZOOOOOM in:
+#tempFilename <- "shape.zip"
+#akMapObject=getDataObject(cli,'df35d.431.1')  ## shp file from dataONE
+#akMapData <- getData(akMapObject)
+#writeBin(akMapData,"shape")
+#file.rename("shape",tempFilename)
+#unzip(tempFilename, list=FALSE) ### ERRORS, not sure why, line 21: Error in name == "GADM" : comparison (1) is possible only for atomic and list types
 
 state <- readOGR('../../../GIS','statep010')
 stateDf=fortify(state)
@@ -83,7 +82,7 @@ ggplot(data=stateDf, aes(y=lat, x=lon)) +
         axis.text=element_text(size=14),
         title=element_text(size=16,face="bold"))+
   guides(colour = guide_legend(override.aes = list(size=6)))
-ggsave("../../../rp_hcdbSampleLocs.png", width=12, height=9)
+ggsave("rp_hcdbSampleLocs.png", width=12, height=9)
 
 ############################################
 ###########################################

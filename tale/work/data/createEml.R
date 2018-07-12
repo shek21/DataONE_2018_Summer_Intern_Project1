@@ -12,7 +12,7 @@ contact <- new("contact",
                electronicMail = slee@electronicMailAddress, 
                organizationName = "IIT", phone="000-000-0000")
 pubDate <- "2018-07-03"
-title <- "Bundling test for EVOS GoA"
+title <- "Bundling test with new test analysis"
 abstract <- "test abs"
 
 dataset <- new("dataset", 
@@ -25,9 +25,9 @@ dataset <- new("dataset",
 eml <- new("eml", system="uuid", dataset=dataset)
 
 # write it into a file
-#write_eml(eml, "./meta.xml")
+write_eml(eml, "../../../meta.xml")
 
 # check the written metadata file is valid
-#eml_validate("./meta.xml")
+eml_validate("../../../meta.xml")
 
 print(eml)

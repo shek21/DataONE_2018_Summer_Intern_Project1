@@ -13,7 +13,7 @@ dp <- new("DataPackage")
 
 
 # Add members
-metadataObj <- new("DataObject", format="eml://ecoinformatics.org/eml-2.1.1", filename="./meta.xml")
+metadataObj <- new("DataObject", format="eml://ecoinformatics.org/eml-2.1.1", filename="../../../meta.xml")
 dp <- addMember(dp, metadataObj)
 
 # Collect lists of files except metadata file
@@ -32,6 +32,7 @@ print(dp)
 
 
 # add otherEntity
+#devtools::install_github("nceas/arcticdatautils")
 library(arcticdatautils)
 
 pids <- NULL
@@ -42,13 +43,13 @@ for(i in 1:length(flists)) {
 }
 entity_df <- data.frame(type="otherEntity", path=flists, pid=pids, format_id=guess_format_id(flists), stringsAsFactors=FALSE)
 eml <- eml_add_entities(eml, entity_df)
-write_eml(eml, "./meta.xml")
-eml_validate("./meta.xml")
+write_eml(eml, "../../../meta.xml")
+eml_validate("../../../meta.xml")
 print(eml)
 
 
 # replace metadata file in the package
-dp <- replaceMember(dp, metadataObj, replacement="./meta.xml", formatId="eml://ecoinformatics.org/eml-2.1.1")
+dp <- replaceMember(dp, metadataObj, replacement="../../../meta.xml", formatId="eml://ecoinformatics.org/eml-2.1.1")
 print(dp)
 
 
