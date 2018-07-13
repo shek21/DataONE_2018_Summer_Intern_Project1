@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packageId="99a34fa5-8731-43ba-adce-cf1cd36cf073" system="uuid" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 eml.xsd">
+  <dataset>
+    <title>Bundling test3</title>
+    <creator>
+      <individualName>
+        <givenName>Seokki</givenName>
+        <surName>Lee</surName>
+      </individualName>
+      <electronicMailAddress>slee195@hawk.iit.edu</electronicMailAddress>
+    </creator>
+    <pubDate>2018-07-10</pubDate>
+    <abstract>test abs</abstract>
+    <coverage>
+      <geographicCoverage>
+        <geographicDescription>Chicago</geographicDescription>
+        <boundingCoordinates>
+          <westBoundingCoordinate>-87.623177</westBoundingCoordinate>
+          <eastBoundingCoordinate>-87.623177</eastBoundingCoordinate>
+          <northBoundingCoordinate>41.881832</northBoundingCoordinate>
+          <southBoundingCoordinate>41.881832</southBoundingCoordinate>
+        </boundingCoordinates>
+      </geographicCoverage>
+      <temporalCoverage>
+        <rangeOfDates>
+          <beginDate>
+            <calendarDate>2018-07-09</calendarDate>
+          </beginDate>
+          <endDate>
+            <calendarDate>2018-07-13</calendarDate>
+          </endDate>
+        </rangeOfDates>
+      </temporalCoverage>
+    </coverage>
+    <contact>
+      <individualName>
+        <givenName>Seokki</givenName>
+        <surName>Lee</surName>
+      </individualName>
+      <organizationName>IIT</organizationName>
+      <phone>000-000-0000</phone>
+      <electronicMailAddress>slee195@hawk.iit.edu</electronicMailAddress>
+    </contact>
+    <otherEntity id="urn:uuid:99f677ec-c020-4e9d-8526-635feb02792e" scope="document">
+      <entityName>analysis.R</entityName>
+      <physical scope="document">
+        <objectName>analysis.R</objectName>
+        <size unit="bytes">356</size>
+        <authentication method="SHA-1">c3cc1027504e68bec530d5c9c7a6f59fdca6ea62</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>application/octet-stream</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:99f677ec-c020-4e9d-8526-635feb02792e</url>
+          </online>
+        </distribution>
+      </physical>
+      <entityType>Other</entityType>
+    </otherEntity>
+    <otherEntity id="urn:uuid:9d38badf-96c4-4f23-92be-1d55ab2c2556" scope="document">
+      <entityName>mtcars_g.png</entityName>
+      <physical scope="document">
+        <objectName>mtcars_g.png</objectName>
+        <size unit="bytes">79800</size>
+        <authentication method="SHA-1">3cd8e638ed05d01f293f6b878788a4950b178e34</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>image/png</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:9d38badf-96c4-4f23-92be-1d55ab2c2556</url>
+          </online>
+        </distribution>
+      </physical>
+      <entityType>Other</entityType>
+    </otherEntity>
+    <otherEntity id="urn:uuid:33a0d503-8bf0-4dd6-94e6-a856fb858c50" scope="document">
+      <entityName>mtcars_gathered.csv</entityName>
+      <physical scope="document">
+        <objectName>mtcars_gathered.csv</objectName>
+        <size unit="bytes">5401</size>
+        <authentication method="SHA-1">38dd3e4fd9e7aaf9e43ee073f66f36fa34dd264c</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>text/csv</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:33a0d503-8bf0-4dd6-94e6-a856fb858c50</url>
+          </online>
+        </distribution>
+      </physical>
+      <entityType>Other</entityType>
+    </otherEntity>
+    <otherEntity id="urn:uuid:173e1255-4102-4aff-9992-15052b20f755" scope="document">
+      <entityName>mtcars.csv</entityName>
+      <physical scope="document">
+        <objectName>mtcars.csv</objectName>
+        <size unit="bytes">1281</size>
+        <authentication method="SHA-1">dfd44f97e2bd9b5efe4bd2e87851cfe717f3fc2f</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>text/csv</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:173e1255-4102-4aff-9992-15052b20f755</url>
+          </online>
+        </distribution>
+      </physical>
+      <entityType>Other</entityType>
+    </otherEntity>
+  </dataset>
+</eml:eml>

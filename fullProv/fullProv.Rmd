@@ -1,0 +1,169 @@
+---
+title: "Keep track of full provenance of a package"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "/Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/fullProv/bobPkg")
+```
+
+### Original package using to generate new package
+```{r}
+library(dataone)
+library(datapack)
+
+d1c <- D1Client("STAGING", "urn:node:mnTestARCTIC")
+origPkg <- getDataPackage(d1c, identifier = "urn:uuid:5cfda337-4d6b-49a1-ac64-c6bc62d8d439", lazyLoad=TRUE, limit="0MB", quiet=FALSE)
+```
+
+
+### Bundling new package
+##### Create metadata in eml
+```{r}
+source("../createEml.R")
+```
+
+
+##### Create a package
+```{r}
+dp <- new("DataPackage")
+```
+
+
+##### Add members
+```{r}
+devtools::install_github("nceas/arcticdatautils")
+library(arcticdatautils)
+
+metadataObj <- new("DataObject", format="eml://ecoinformatics.org/eml-2.1.1", filename="./meta.xml")
+dp <- addMember(dp, metadataObj)
+
+# Collect lists of files except metadata file
+flists <- grep(list.files("."), pattern="\\.xml$", inv=T, value=T)
+flists <- grep(flists, pattern="\\.zip$", inv=T, value=T)
+
+# Filter out directory names
+flists <- setdiff(flists, list.dirs(recursive = FALSE, full.names = FALSE))
+
+for(o in flists) { 
+  obj <- new("DataObject", format=guess_format_id(o), filename=paste("./",o,sep=""))
+  dp <- addMember(dp, obj, metadataObj)
+}
+
+print(dp)
+
+
+# add otherEntity
+pids <- NULL
+for(i in 1:length(flists)) {
+  pid <- selectMember(dp, name="sysmeta@fileName", value=flists[i])
+  pids <- c(pids, pid)
+  flists[i] <- paste("./", flists[i], sep="")
+}
+entity_df <- data.frame(type="otherEntity", path=flists, pid=pids, format_id=guess_format_id(flists), stringsAsFactors=FALSE)
+eml <- eml_add_entities(eml, entity_df)
+write_eml(eml, "./meta.xml")
+eml_validate("./meta.xml")
+print(eml)
+
+
+# replace metadata file in the package
+dp <- replaceMember(dp, metadataObj, replacement="./meta.xml", formatId="eml://ecoinformatics.org/eml-2.1.1")
+print(dp)
+```
+
+
+##### Capture provenance
++ Add information of which object is used for new analysis (e.g., (new_analysis.R, "prov:used", Alice's resource map id))
++ Add information of what is the package that the object used belongs to (e.g., (new_analysis.R, "prov:used", "mtcars.csv"))
+```{r}
+devtools::install_github("nceas/recordr")
+library(recordr)
+rc <- new("Recordr")
+
+progFiles <- list.files(".", pattern="\\.R$")
+
+if(length(progFiles) > 0) {
+  for(i in progFiles) {
+    record(rc, paste("./",i,sep=""), tag=i)
+  }
+  
+  # Add provenance into the package
+  for(i in 1:length(progFiles)) {
+    # capture file names and access types
+    vr <- viewRuns(rc, seq=i)
+    vrdf <- setNames(data.frame(basename(vr$files$filePath), vr$files$access), c("names","access"))
+    vrUsed <- setNames(subset(vrdf, vrdf$access == "read"), c("names","acess"))
+    vrDerived <- setNames(subset(vrdf, vrdf$access == "write"), c("names","acess"))
+    
+    # capture ids for sources (those files used and read)
+    sids <- NULL
+    for(n in 1:length(vrUsed$names)) {
+      sid <- selectMember(dp, name="sysmeta@fileName", value=as.character(vrUsed$names[n]))
+      sids <- c(sids, sid)
+      
+      # add connection as relationships into Bob's package
+      sids <- c(sids, origPkg@resmapId)
+      sids <- c(sids, as.character(vrUsed$names[n]))
+    }
+    
+    # capture ids for outputs (those files derived)
+    oids <- NULL
+    for(o in 1:length(vrDerived$names)) {
+      oid <- selectMember(dp, name="sysmeta@fileName", value=as.character(vrDerived$names[o]))
+      oids <- c(oids, oid)
+    }
+    
+    # capture id for program script
+    pid <- selectMember(dp, name="sysmeta@fileName", value=progFiles[i])
+    
+    # create provenance relationships
+    dp <- describeWorkflow(dp, sources=sids, program=pid, derivations=oids)
+  }
+  
+  print(dp)  
+}
+```
+
+### Publish package to DataONE Test node
+```{r}
+#d1c <- D1Client("STAGING", "urn:node:mnTestARCTIC")
+#pkgId <- uploadDataPackage(d1c, dp, public=TRUE, quiet=FALSE)
+```
+
+
+### Retrieve during transparancy 
+##### Download package from DataONE
+```{r}
+fullProvPkg <- getDataPackage(d1c, identifier = "urn:uuid:24da8564-faaf-4984-80f8-655c186e220e", lazyLoad=TRUE, limit="0MB", quiet=FALSE)
+```
+
+##### Get provenance relationships
+```{r}
+relFullProv <- getRelationships(fullProvPkg, condense=T)
+prov <- subset(relFullProv, predicate=="prov:used" | predicate =="prov:wasDerivedFrom" | predicate=="prov:wasGeneratedBy")
+```
+
+##### Replace ids with names
+```{r}
+provPlan <- subset(relFullProv,predicate == "prov:hadPlan")
+provAsso <- subset(relFullProv,predicate == "prov:qualifiedAssociation")
+provAsso$object <- provPlan$object[match(provAsso$object, provPlan$subject)]
+indx <- match(prov$subject, provAsso$subject, nomatch = 0)
+prov$subject[indx != 0] <- provAsso$object[indx]
+indx <- match(prov$object, provAsso$subject, nomatch = 0)
+prov$object[indx != 0] <- provAsso$object[indx]
+prov <- data.frame(lapply(prov, as.character), stringsAsFactors=FALSE)
+prov
+```
+
+<!--
+##### Filter out unnecessary relationships
+```{r}
+provSimp <- subset(prov, predicate=="prov:used" | predicate=="prov:wasGeneratedBy")
+provSimp
+```
+-->

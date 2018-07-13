@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packageId="3923b5d4-368a-4b60-97b7-32206e8b6e4b" system="uuid" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 eml.xsd">
+  <dataset>
+    <title>test storing provenance into resmap</title>
+    <creator>
+      <individualName>
+        <givenName>Seokki</givenName>
+        <surName>Lee</surName>
+      </individualName>
+      <electronicMailAddress>slee195@hawk.iit.edu</electronicMailAddress>
+    </creator>
+    <pubDate>2018-07-10</pubDate>
+    <abstract>test abs</abstract>
+    <coverage>
+      <geographicCoverage>
+        <geographicDescription>Chicago</geographicDescription>
+        <boundingCoordinates>
+          <westBoundingCoordinate>-87.623177</westBoundingCoordinate>
+          <eastBoundingCoordinate>-87.623177</eastBoundingCoordinate>
+          <northBoundingCoordinate>41.881832</northBoundingCoordinate>
+          <southBoundingCoordinate>41.881832</southBoundingCoordinate>
+        </boundingCoordinates>
+      </geographicCoverage>
+      <temporalCoverage>
+        <rangeOfDates>
+          <beginDate>
+            <calendarDate>2018-07-09</calendarDate>
+          </beginDate>
+          <endDate>
+            <calendarDate>2018-07-13</calendarDate>
+          </endDate>
+        </rangeOfDates>
+      </temporalCoverage>
+    </coverage>
+    <contact>
+      <individualName>
+        <givenName>Seokki</givenName>
+        <surName>Lee</surName>
+      </individualName>
+      <organizationName>IIT</organizationName>
+      <phone>000-000-0000</phone>
+      <electronicMailAddress>slee195@hawk.iit.edu</electronicMailAddress>
+    </contact>
+    <otherEntity id="urn:uuid:1f415349-6e59-4104-b397-3b32ed5b6848" scope="document">
+      <entityName>new_analysis.R</entityName>
+      <physical scope="document">
+        <objectName>new_analysis.R</objectName>
+        <size unit="bytes">376</size>
+        <authentication method="SHA-1">6db939354e2593c0d83a55c7166dcd2595569fab</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>application/octet-stream</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:1f415349-6e59-4104-b397-3b32ed5b6848</url>
+          </online>
+        </distribution>
+      </physical>
+      <entityType>Other</entityType>
+    </otherEntity>
+    <otherEntity id="urn:uuid:716d33f0-e522-4c35-bac6-fbadf1ddf7ab" scope="document">
+      <entityName>new_mtcars_g.png</entityName>
+      <physical scope="document">
+        <objectName>new_mtcars_g.png</objectName>
+        <size unit="bytes">79800</size>
+        <authentication method="SHA-1">3cd8e638ed05d01f293f6b878788a4950b178e34</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>image/png</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:716d33f0-e522-4c35-bac6-fbadf1ddf7ab</url>
+          </online>
+        </distribution>
+      </physical>
+      <entityType>Other</entityType>
+    </otherEntity>
+    <otherEntity id="urn:uuid:8141eb6e-9df9-4578-b6ff-bb0e7ea256c8" scope="document">
+      <entityName>new_mtcars_gathered.csv</entityName>
+      <physical scope="document">
+        <objectName>new_mtcars_gathered.csv</objectName>
+        <size unit="bytes">5401</size>
+        <authentication method="SHA-1">38dd3e4fd9e7aaf9e43ee073f66f36fa34dd264c</authentication>
+        <dataFormat>
+          <externallyDefinedFormat>
+            <formatName>text/csv</formatName>
+          </externallyDefinedFormat>
+        </dataFormat>
+        <distribution scope="document">
+          <online>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:8141eb6e-9df9-4578-b6ff-bb0e7ea256c8</url>
+          </online>
+        </distribution>
+      </physical>
+      <entityType>Other</entityType>
+    </otherEntity>
+  </dataset>
+</eml:eml>
