@@ -1,0 +1,87 @@
+---
+title: "Transparancy of the provenance information for hydrocarbons use case in DataONE"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "/Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/transparency")
+```
+
+### Run "transparency.R" to retrieve provenance information
+### This guideline is also available [here](https://shek21.github.io/simp_transparency.html)
+
+&nbsp;
+
+#### 1. Get package from production node of Gulf of Alaska Data Portal (GOA)
+```{r}
+library(dataone)
+library(datapack)
+d1c <- D1Client("PROD", "urn:node:GOA")
+pkg <- getDataPackage(d1c, identifier = "urn:uuid:1d23e155-3ef5-47c6-9612-027c80855e8d", lazyLoad=TRUE, limit="0MB", quiet=FALSE)
+saveWidth <- getOption("width")
+options(width=120)
+```
+
+#### 2. Retrieve provenance using "getRelationships" function
++ The provenance relationship is stored as a triple in the package 
++ These triples are stored in the so called resource map as a RDF graph format
++ As you might recognize, some relationships use some ids. This happens due to the process designed in the provenance model in DataONE. This can be replaced with their names since the package contains full provenance relatioships.
+```{r}
+rels <- getRelationships(pkg, condense=T)
+rels <- subset(rels, predicate=="prov:used" | predicate =="prov:wasDerivedFrom" | predicate=="prov:wasGeneratedBy" | predicate=="prov:hadPlan" | predicate=="prov:qualifiedAssociation")
+rels
+```
+
+#### 3. Replace ids with names
+```{r}
+prov <- subset(rels, predicate=="prov:used" | predicate =="prov:wasDerivedFrom" | predicate=="prov:wasGeneratedBy")
+provPlan <- subset(rels,predicate == "prov:hadPlan")
+provAsso <- subset(rels,predicate == "prov:qualifiedAssociation")
+provAsso$object <- provPlan$object[match(provAsso$object, provPlan$subject)]
+indx <- match(prov$subject, provAsso$subject, nomatch = 0)
+prov$subject[indx != 0] <- provAsso$object[indx]
+indx <- match(prov$object, provAsso$subject, nomatch = 0)
+prov$object[indx != 0] <- provAsso$object[indx]
+prov
+```
+
+#### Visualize provenance, e.g., in YesWorkflow (YW)
++ Assume that the YW annotations are applied to the scripts using the provenance information captured
++ Use command to generate a YW to compare with the one provided in the landing page
+
+```{r, engine = 'bash', eval = FALSE}
+# define base directories
+export EXAMPLE_DIR=.
+export PROJECT_ROOT=.
+
+# define lcoation of YesWorkflow jar file
+export YW_JAR="${PROJECT_ROOT}/yw_jar/yesworkflow-0.2.1-SNAPSHOT-jar-with-dependencies.jar"
+
+# define command for running YesWorkflow
+export YW_CMD="java -jar $YW_JAR"
+
+# destination of facts, views and query results
+export SCRIPT_DIR=${EXAMPLE_DIR}/scripts
+export RESULTS_DIR=${EXAMPLE_DIR}/results
+
+mkdir -p $RESULTS_DIR
+
+# generate workflow using commented script
+graph_name="aoos_retro_wf_graph"
+$YW_CMD graph "./scripts/aoos.R" \
+    -c graph.view=combined \
+    -c graph.layout=tb \
+      > $RESULTS_DIR/$graph_name.gv
+dot -Tpdf $RESULTS_DIR/$graph_name.gv > $RESULTS_DIR/$graph_name.pdf
+dot -Tsvg $RESULTS_DIR/$graph_name.gv > $RESULTS_DIR/$graph_name.svg
+```
+
+```{r, out.width="950px", out.height="600px"}
+#system("source ./make.sh")
+knitr::include_graphics("./results/aoos_retro_wf_graph.pdf")
+```
+
+
