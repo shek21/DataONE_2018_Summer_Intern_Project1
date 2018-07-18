@@ -343,7 +343,7 @@ origPkg &lt;- getDataPackage(d1c, identifier = &quot;urn:uuid:5cfda337-4d6b-49a1
 <pre><code>## Installing arcticdatautils</code></pre>
 <pre><code>## '/Library/Frameworks/R.framework/Resources/bin/R' --no-site-file  \
 ##   --no-environ --no-save --no-restore --quiet CMD INSTALL  \
-##   '/private/var/folders/7t/xdmtt00j0w53slb206w9xh100000gn/T/RtmpRfN2DR/devtoolsd62823ff9ba2/NCEAS-arcticdatautils-ed26220'  \
+##   '/private/var/folders/7t/xdmtt00j0w53slb206w9xh100000gn/T/RtmplWeInQ/devtoolsf9ff78aff70c/NCEAS-arcticdatautils-ed26220'  \
 ##   --library='/Library/Frameworks/R.framework/Versions/3.3/Resources/library'  \
 ##   --install-tests</code></pre>
 <pre><code>## </code></pre>
@@ -368,10 +368,10 @@ print(dp)</code></pre>
 <pre><code>## Members:
 ## 
 ## filename        format    mediaType  size     identifier    modified local 
-## new_analysis.R  app...eam NA         376      urn:u...b6848 n        y     
-## meta.xml        eml...1.1 NA         1789     urn:u...4fc1a n        y     
-## new_mt..._g.png image/png NA         79800    urn:u...df7ab n        y     
-## new_mt...ed.csv text/csv  NA         5401     urn:u...256c8 n        y     
+## new_analysis.R  app...eam NA         376      urn:u...5828a n        y     
+## new_mt..._g.png image/png NA         79800    urn:u...bded8 n        y     
+## meta.xml        eml...1.1 NA         1790     urn:u...cac85 n        y     
+## new_mt...ed.csv text/csv  NA         5401     urn:u...869af n        y     
 ## 
 ## Package identifier: NA
 ## RightsHolder: NA
@@ -401,9 +401,9 @@ eml_validate(&quot;./meta.xml&quot;)</code></pre>
 ## attr(,&quot;errors&quot;)
 ## character(0)</code></pre>
 <pre class="r"><code>print(eml)</code></pre>
-<pre><code>## &lt;eml packageId=&quot;329c732a-3434-43dd-9127-eff812af1372&quot; system=&quot;uuid&quot; xsi:schemaLocation=&quot;eml://ecoinformatics.org/eml-2.1.1 eml.xsd&quot;&gt;
+<pre><code>## &lt;eml packageId=&quot;66360f48-9f72-4ae8-a09b-a326f273f90b&quot; system=&quot;uuid&quot; xsi:schemaLocation=&quot;eml://ecoinformatics.org/eml-2.1.1 eml.xsd&quot;&gt;
 ##   &lt;dataset&gt;
-##     &lt;title&gt;test storing provenance into resmap&lt;/title&gt;
+##     &lt;title&gt;test2 storing provenance into resmap&lt;/title&gt;
 ##     &lt;creator&gt;
 ##       &lt;individualName&gt;
 ##         &lt;givenName&gt;Seokki&lt;/givenName&gt;
@@ -411,7 +411,7 @@ eml_validate(&quot;./meta.xml&quot;)</code></pre>
 ##       &lt;/individualName&gt;
 ##       &lt;electronicMailAddress&gt;slee195@hawk.iit.edu&lt;/electronicMailAddress&gt;
 ##     &lt;/creator&gt;
-##     &lt;pubDate&gt;2018-07-10&lt;/pubDate&gt;
+##     &lt;pubDate&gt;2018-07-13&lt;/pubDate&gt;
 ##     &lt;abstract&gt;test abs&lt;/abstract&gt;
 ##     &lt;coverage&gt;
 ##       &lt;geographicCoverage&gt;
@@ -443,7 +443,7 @@ eml_validate(&quot;./meta.xml&quot;)</code></pre>
 ##       &lt;phone&gt;000-000-0000&lt;/phone&gt;
 ##       &lt;electronicMailAddress&gt;slee195@hawk.iit.edu&lt;/electronicMailAddress&gt;
 ##     &lt;/contact&gt;
-##     &lt;otherEntity id=&quot;urn:uuid:1f415349-6e59-4104-b397-3b32ed5b6848&quot; scope=&quot;document&quot;&gt;
+##     &lt;otherEntity id=&quot;urn:uuid:1752ca89-e597-4b33-b0d0-7fd55af5828a&quot; scope=&quot;document&quot;&gt;
 ##       &lt;entityName&gt;new_analysis.R&lt;/entityName&gt;
 ##       &lt;physical scope=&quot;document&quot;&gt;
 ##         &lt;objectName&gt;new_analysis.R&lt;/objectName&gt;
@@ -456,13 +456,13 @@ eml_validate(&quot;./meta.xml&quot;)</code></pre>
 ##         &lt;/dataFormat&gt;
 ##         &lt;distribution scope=&quot;document&quot;&gt;
 ##           &lt;online&gt;
-##             &lt;url function=&quot;download&quot;&gt;https://cn.dataone.org/cn/v2/resolve/urn:uuid:1f415349-6e59-4104-b397-3b32ed5b6848&lt;/url&gt;
+##             &lt;url function=&quot;download&quot;&gt;https://cn.dataone.org/cn/v2/resolve/urn:uuid:1752ca89-e597-4b33-b0d0-7fd55af5828a&lt;/url&gt;
 ##           &lt;/online&gt;
 ##         &lt;/distribution&gt;
 ##       &lt;/physical&gt;
 ##       &lt;entityType&gt;Other&lt;/entityType&gt;
 ##     &lt;/otherEntity&gt;
-##     &lt;otherEntity id=&quot;urn:uuid:716d33f0-e522-4c35-bac6-fbadf1ddf7ab&quot; scope=&quot;document&quot;&gt;
+##     &lt;otherEntity id=&quot;urn:uuid:93af879f-e121-4891-be99-b49e5f4bded8&quot; scope=&quot;document&quot;&gt;
 ##       &lt;entityName&gt;new_mtcars_g.png&lt;/entityName&gt;
 ##       &lt;physical scope=&quot;document&quot;&gt;
 ##         &lt;objectName&gt;new_mtcars_g.png&lt;/objectName&gt;
@@ -475,13 +475,13 @@ eml_validate(&quot;./meta.xml&quot;)</code></pre>
 ##         &lt;/dataFormat&gt;
 ##         &lt;distribution scope=&quot;document&quot;&gt;
 ##           &lt;online&gt;
-##             &lt;url function=&quot;download&quot;&gt;https://cn.dataone.org/cn/v2/resolve/urn:uuid:716d33f0-e522-4c35-bac6-fbadf1ddf7ab&lt;/url&gt;
+##             &lt;url function=&quot;download&quot;&gt;https://cn.dataone.org/cn/v2/resolve/urn:uuid:93af879f-e121-4891-be99-b49e5f4bded8&lt;/url&gt;
 ##           &lt;/online&gt;
 ##         &lt;/distribution&gt;
 ##       &lt;/physical&gt;
 ##       &lt;entityType&gt;Other&lt;/entityType&gt;
 ##     &lt;/otherEntity&gt;
-##     &lt;otherEntity id=&quot;urn:uuid:8141eb6e-9df9-4578-b6ff-bb0e7ea256c8&quot; scope=&quot;document&quot;&gt;
+##     &lt;otherEntity id=&quot;urn:uuid:e9fff181-5862-4b1d-964b-fc5e438869af&quot; scope=&quot;document&quot;&gt;
 ##       &lt;entityName&gt;new_mtcars_gathered.csv&lt;/entityName&gt;
 ##       &lt;physical scope=&quot;document&quot;&gt;
 ##         &lt;objectName&gt;new_mtcars_gathered.csv&lt;/objectName&gt;
@@ -494,7 +494,7 @@ eml_validate(&quot;./meta.xml&quot;)</code></pre>
 ##         &lt;/dataFormat&gt;
 ##         &lt;distribution scope=&quot;document&quot;&gt;
 ##           &lt;online&gt;
-##             &lt;url function=&quot;download&quot;&gt;https://cn.dataone.org/cn/v2/resolve/urn:uuid:8141eb6e-9df9-4578-b6ff-bb0e7ea256c8&lt;/url&gt;
+##             &lt;url function=&quot;download&quot;&gt;https://cn.dataone.org/cn/v2/resolve/urn:uuid:e9fff181-5862-4b1d-964b-fc5e438869af&lt;/url&gt;
 ##           &lt;/online&gt;
 ##         &lt;/distribution&gt;
 ##       &lt;/physical&gt;
@@ -508,10 +508,10 @@ print(dp)</code></pre>
 <pre><code>## Members:
 ## 
 ## filename        format    mediaType  size     identifier    modified local 
-## new_analysis.R  app...eam NA         376      urn:u...b6848 n        y     
-## meta.xml        eml...1.1 NA         4273     urn:u...4fc1a y        y     
-## new_mt..._g.png image/png NA         79800    urn:u...df7ab n        y     
-## new_mt...ed.csv text/csv  NA         5401     urn:u...256c8 n        y     
+## new_analysis.R  app...eam NA         376      urn:u...5828a n        y     
+## new_mt..._g.png image/png NA         79800    urn:u...bded8 n        y     
+## meta.xml        eml...1.1 NA         4274     urn:u...cac85 y        y     
+## new_mt...ed.csv text/csv  NA         5401     urn:u...869af n        y     
 ## 
 ## Package identifier: NA
 ## RightsHolder: NA
@@ -539,7 +539,7 @@ print(dp)</code></pre>
 <pre><code>## Installing recordr</code></pre>
 <pre><code>## '/Library/Frameworks/R.framework/Resources/bin/R' --no-site-file  \
 ##   --no-environ --no-save --no-restore --quiet CMD INSTALL  \
-##   '/private/var/folders/7t/xdmtt00j0w53slb206w9xh100000gn/T/RtmpRfN2DR/devtoolsd62856ff8bc8/NCEAS-recordr-553ca40'  \
+##   '/private/var/folders/7t/xdmtt00j0w53slb206w9xh100000gn/T/RtmplWeInQ/devtoolsf9ff502e6736/NCEAS-recordr-553ca40'  \
 ##   --library='/Library/Frameworks/R.framework/Versions/3.3/Resources/library'  \
 ##   --install-tests</code></pre>
 <pre><code>## </code></pre>
@@ -547,7 +547,7 @@ print(dp)</code></pre>
 rc &lt;- new(&quot;Recordr&quot;)</code></pre>
 <pre><code>## A new recordr home directory has been created at:
 ## 
-##  /var/folders/7t/xdmtt00j0w53slb206w9xh100000gn/T//RtmpRfN2DR/recordr</code></pre>
+##  /var/folders/7t/xdmtt00j0w53slb206w9xh100000gn/T//RtmplWeInQ/recordr</code></pre>
 <pre><code>## The recordr package will save run information to this directory, which is under</code></pre>
 <pre><code>## the R session temporary directory. Therefore the information that recordr collects</code></pre>
 <pre><code>## will be removed by R when the current R session ends.</code></pre>
@@ -577,9 +577,16 @@ if(length(progFiles) &gt; 0) {
       sid &lt;- selectMember(dp, name=&quot;sysmeta@fileName&quot;, value=as.character(vrUsed$names[n]))
       sids &lt;- c(sids, sid)
       
-      # add connection as relationships into Bob's package
-      sids &lt;- c(sids, origPkg@resmapId)
-      sids &lt;- c(sids, as.character(vrUsed$names[n]))
+      # add a connection to Alice's package as a relationship into Bob's package
+      # information of the original package that the source data belongs to
+      if(!is.element(origPkg@resmapId, sids)) {
+        sids &lt;- c(sids, origPkg@resmapId) 
+      }
+      
+      # information of the object in the original package that the Bob's analysis used
+      sid &lt;- selectMember(origPkg, name=&quot;sysmeta@fileName&quot;, value=as.character(vrUsed$names[n]))
+      sids &lt;- c(sids, sid)
+      #sids &lt;- c(sids, as.character(vrUsed$names[n]))
     }
     
     # capture ids for outputs (those files derived)
@@ -613,7 +620,7 @@ if(length(progFiles) &gt; 0) {
 ##     extract</code></pre>
 <pre><code>## [details]: Run details
 ## ----------------------
-## &quot;/Users/eunjungpark/Documents/data...ct1/fullProv/bobPkg/new_analysis.R&quot; was executed on 2018-07-12 21:12:11 CDT
+## &quot;/Users/eunjungpark/Documents/data...ct1/fullProv/bobPkg/new_analysis.R&quot; was executed on 2018-07-13 12:46:39 CDT
 ## Tag: &quot;new_analysis.R&quot;
 ## Run sequence #: 1
 ## Publish date: Not published
@@ -622,14 +629,14 @@ if(length(progFiles) &gt; 0) {
 ## View at: NA
 ## Run by user: eunjungpark
 ## Account subject: NA
-## Run Id: urn:uuid:8f10437f-1d68-4258-aea9-2a3839943c30
-## Data package Id: urn:uuid:14e04f7b-3abf-44e8-bb85-d91f7f1fecfa
+## Run Id: urn:uuid:777cebdb-854d-4d47-a9c8-a9cb1cec5249
+## Data package Id: urn:uuid:5c585589-36f8-4e93-aec8-378a00be122a
 ## HostId: eunjeong-bag-ui-MacBook-Pro.local
 ## Operating system: x86_64-apple-darwin13.4.0
 ## R version: R version 3.3.3 (2017-03-06)
 ## Dependencies: stats, graphics, grDevices, utils, datasets, methods, base, Rcpp_0.12.17, git2r_0.21.0, plyr_1.8.4, base64enc_0.1-3, tools_3.3.3, digest_0.6.15, uuid_0.1-2, bit_1.1-14, jsonlite_1.5, evaluate_0.10.1, memoise_1.1.0, RSQLite_2.0, pkgconfig_2.0.1, DBI_1.0.0, commonmark_1.5, curl_3.2, yaml_2.1.16, withr_2.1.2, httr_1.3.1, stringr_1.2.0, roxygen2_6.0.1, xml2_1.2.0, knitr_1.18, devtools_1.13.6, rappdirs_0.3.1, rprojroot_1.3-2, bit64_0.9-7, redland_1.0.17-9, parsedate_1.1.3, R6_2.2.2, hash_2.2.6, XML_3.98-1.9, rmarkdown_1.10, blob_1.1.1, magrittr_1.5, backports_1.1.2, htmltools_0.3.6, stringi_1.2.3, openssl_1.0.1, recordr_1.0.3.9000, arcticdatautils_0.6.4, EML_1.0.3, datapack_1.3.1, dataone_2.1.1
-## Run start time: 2018-07-12 21:12:11 CDT
-## Run end time: 2018-07-12 21:12:16 CDT
+## Run start time: 2018-07-13 12:46:39 CDT
+## Run end time: 2018-07-13 12:46:45 CDT
 ## Error message from this run: NA
 ## 
 ## [used]: 1 items used by this run
@@ -640,15 +647,15 @@ if(length(progFiles) &gt; 0) {
 ## [generated]: 2 items generated by this run
 ## -----------------------------------------
 ## Location                                                     Size (kb)    Modified time      
-## /Users/eunjungpark/Documents...obPkg/new_mtcars_gathered.csv 5401         2018-07-12 21:12:15
-## /Users/eunjungpark/Documents...lProv/bobPkg/new_mtcars_g.png 79800        2018-07-12 21:07:31
+## /Users/eunjungpark/Documents...obPkg/new_mtcars_gathered.csv 5401         2018-07-13 12:46:43
+## /Users/eunjungpark/Documents...lProv/bobPkg/new_mtcars_g.png 79800        2018-07-13 12:39:44
 ## Members:
 ## 
 ## filename        format    mediaType  size     identifier    modified local 
-## new_analysis.R  app...eam NA         376      urn:u...b6848 n        y     
-## meta.xml        eml...1.1 NA         4273     urn:u...4fc1a y        y     
-## new_mt..._g.png image/png NA         79800    urn:u...df7ab n        y     
-## new_mt...ed.csv text/csv  NA         5401     urn:u...256c8 n        y     
+## new_analysis.R  app...eam NA         376      urn:u...5828a n        y     
+## new_mt..._g.png image/png NA         79800    urn:u...bded8 n        y     
+## meta.xml        eml...1.1 NA         4274     urn:u...cac85 y        y     
+## new_mt...ed.csv text/csv  NA         5401     urn:u...869af n        y     
 ## 
 ## Package identifier: NA
 ## RightsHolder: NA
@@ -657,30 +664,30 @@ if(length(progFiles) &gt; 0) {
 ## Relationships (updated):
 ## 
 ##                  subject             predicate                object
-## 14 _aa8b3455...ee88ca21a              rdf:type      prov:Association
-## 13 _aa8b3455...ee88ca21a          prov:hadPlan        new_analysis.R
+## 14 _0b4e40fa...9d2acbefd              rdf:type      prov:Association
+## 13 _0b4e40fa...9d2acbefd          prov:hadPlan        new_analysis.R
 ## 1               meta.xml        cito:documents        new_analysis.R
 ## 3               meta.xml        cito:documents      new_mtcars_g.png
 ## 5               meta.xml        cito:documents new_mtcar...hered.csv
-## 8             mtcars.csv              rdf:type          provone:Data
 ## 2         new_analysis.R   cito:isDocumentedBy              meta.xml
 ## 15        new_analysis.R              rdf:type       provone:Program
 ## 6  new_mtcar...hered.csv   cito:isDocumentedBy              meta.xml
 ## 9  new_mtcar...hered.csv              rdf:type          provone:Data
-## 22 new_mtcar...hered.csv   prov:wasDerivedFrom            mtcars.csv
 ## 21 new_mtcar...hered.csv   prov:wasDerivedFrom resource_...c62d8d439
-## 19 new_mtcar...hered.csv   prov:wasGeneratedBy urn:uuid:...1ba28fc6e
+## 22 new_mtcar...hered.csv   prov:wasDerivedFrom urn:uuid:...52b20f755
+## 19 new_mtcar...hered.csv   prov:wasGeneratedBy urn:uuid:...2d470bf65
 ## 4       new_mtcars_g.png   cito:isDocumentedBy              meta.xml
 ## 10      new_mtcars_g.png              rdf:type          provone:Data
-## 24      new_mtcars_g.png   prov:wasDerivedFrom            mtcars.csv
 ## 23      new_mtcars_g.png   prov:wasDerivedFrom resource_...c62d8d439
-## 20      new_mtcars_g.png   prov:wasGeneratedBy urn:uuid:...1ba28fc6e
+## 24      new_mtcars_g.png   prov:wasDerivedFrom urn:uuid:...52b20f755
+## 20      new_mtcars_g.png   prov:wasGeneratedBy urn:uuid:...2d470bf65
 ## 7  resource_...c62d8d439              rdf:type          provone:Data
-## 16 urn:uuid:...1ba28fc6e    dcterms:identifier urn:uuid:...1ba28fc6e
-## 12 urn:uuid:...1ba28fc6e              rdf:type     provone:Execution
-## 11 urn:uuid:...1ba28fc6e prov:qual...sociation _aa8b3455...ee88ca21a
-## 18 urn:uuid:...1ba28fc6e             prov:used            mtcars.csv
-## 17 urn:uuid:...1ba28fc6e             prov:used resource_...c62d8d439</code></pre>
+## 16 urn:uuid:...2d470bf65    dcterms:identifier urn:uuid:...2d470bf65
+## 12 urn:uuid:...2d470bf65              rdf:type     provone:Execution
+## 11 urn:uuid:...2d470bf65 prov:qual...sociation _0b4e40fa...9d2acbefd
+## 17 urn:uuid:...2d470bf65             prov:used resource_...c62d8d439
+## 18 urn:uuid:...2d470bf65             prov:used urn:uuid:...52b20f755
+## 8  urn:uuid:...52b20f755              rdf:type          provone:Data</code></pre>
 </div>
 </div>
 <div id="publish-package-to-dataone-test-node" class="section level3">
@@ -692,17 +699,19 @@ if(length(progFiles) &gt; 0) {
 <h3>Retrieve during transparancy</h3>
 <div id="download-package-from-dataone" class="section level5">
 <h5>Download package from DataONE</h5>
-<pre class="r"><code>fullProvPkg &lt;- getDataPackage(d1c, identifier = &quot;urn:uuid:24da8564-faaf-4984-80f8-655c186e220e&quot;, lazyLoad=TRUE, limit=&quot;0MB&quot;, quiet=FALSE)</code></pre>
-<pre><code>## Downloading package members for package with metadata identifier: urn:uuid:24da8564-faaf-4984-80f8-655c186e220e
-## Downloaded object at URL https://test.arcticdata.io/metacat/d1/mn/v2/object/urn:uuid:24da8564-faaf-4984-80f8-655c186e220e
-## Lazy Loaded object at URL https://test.arcticdata.io/metacat/d1/mn/v2/object/urn:uuid:9600913d-4747-486e-bc95-880bbc1cffa3
-## Lazy Loaded object at URL https://test.arcticdata.io/metacat/d1/mn/v2/object/urn:uuid:09a9ca9c-d463-4900-8946-bd39b2b77804
-## Lazy Loaded object at URL https://test.arcticdata.io/metacat/d1/mn/v2/object/urn:uuid:4305fe75-6a8a-4cbf-9d43-d83baf1aefe3
-## Getting resource map with id: resource_map_urn:uuid:24da8564-faaf-4984-80f8-655c186e220e</code></pre>
+<pre class="r"><code>fullProvPkg &lt;- getDataPackage(d1c, identifier = &quot;urn:uuid:7255080f-86e5-422a-8360-117cf80b6f0b&quot;, lazyLoad=TRUE, limit=&quot;0MB&quot;, quiet=FALSE)</code></pre>
+<pre><code>## Downloading package members for package with metadata identifier: urn:uuid:7255080f-86e5-422a-8360-117cf80b6f0b
+## Downloaded object at URL https://test.arcticdata.io/metacat/d1/mn/v2/object/urn:uuid:7255080f-86e5-422a-8360-117cf80b6f0b
+## Lazy Loaded object at URL https://test.arcticdata.io/metacat/d1/mn/v2/object/urn:uuid:ebdd46b9-b2fb-4efd-bb21-c50b96a5fa27
+## Lazy Loaded object at URL https://test.arcticdata.io/metacat/d1/mn/v2/object/urn:uuid:51e765db-ef7b-4001-b5af-81e8c263ee12
+## Lazy Loaded object at URL https://test.arcticdata.io/metacat/d1/mn/v2/object/urn:uuid:280b3f16-efdb-426b-8ec9-e1f9427c30cf
+## Getting resource map with id: resource_map_urn:uuid:7255080f-86e5-422a-8360-117cf80b6f0b</code></pre>
 </div>
 <div id="get-provenance-relationships" class="section level5">
 <h5>Get provenance relationships</h5>
-<pre class="r"><code>relFullProv &lt;- getRelationships(fullProvPkg, condense=T)
+<pre class="r"><code>saveWidth &lt;- getOption(&quot;width&quot;)
+options(width=120)
+relFullProv &lt;- getRelationships(fullProvPkg, condense=T)
 prov &lt;- subset(relFullProv, predicate==&quot;prov:used&quot; | predicate ==&quot;prov:wasDerivedFrom&quot; | predicate==&quot;prov:wasGeneratedBy&quot;)</code></pre>
 </div>
 <div id="replace-ids-with-names" class="section level5">
@@ -716,15 +725,15 @@ indx &lt;- match(prov$object, provAsso$subject, nomatch = 0)
 prov$object[indx != 0] &lt;- provAsso$object[indx]
 prov &lt;- data.frame(lapply(prov, as.character), stringsAsFactors=FALSE)
 prov</code></pre>
-<pre><code>##                 subject           predicate                object
-## 1 new_mtcar...hered.csv prov:wasDerivedFrom https://c...tcars.csv
-## 2 new_mtcar...hered.csv prov:wasDerivedFrom https://c...c62d8d439
-## 3 new_mtcar...hered.csv prov:wasGeneratedBy urn:uuid:...fb7494036
-## 4      new_mtcars_g.png prov:wasDerivedFrom https://c...tcars.csv
-## 5      new_mtcars_g.png prov:wasDerivedFrom https://c...c62d8d439
-## 6      new_mtcars_g.png prov:wasGeneratedBy urn:uuid:...fb7494036
-## 7 urn:uuid:...fb7494036           prov:used https://c...tcars.csv
-## 8 urn:uuid:...fb7494036           prov:used https://c...c62d8d439</code></pre>
+<pre><code>##                   subject           predicate                               object
+## 1        new_mtcars_g.png prov:wasDerivedFrom https://cn-stage...ac64-c6bc62d8d439
+## 2        new_mtcars_g.png prov:wasDerivedFrom https://cn-stage...9992-15052b20f755
+## 3        new_mtcars_g.png prov:wasGeneratedBy                       new_analysis.R
+## 4 new_mtcars_gathered.csv prov:wasDerivedFrom https://cn-stage...ac64-c6bc62d8d439
+## 5 new_mtcars_gathered.csv prov:wasDerivedFrom https://cn-stage...9992-15052b20f755
+## 6 new_mtcars_gathered.csv prov:wasGeneratedBy                       new_analysis.R
+## 7          new_analysis.R           prov:used https://cn-stage...ac64-c6bc62d8d439
+## 8          new_analysis.R           prov:used https://cn-stage...9992-15052b20f755</code></pre>
 <!--
 ##### Filter out unnecessary relationships
 
@@ -734,11 +743,11 @@ provSimp
 ```
 
 ```
-##                 subject           predicate                object
-## 3 new_mtcar...hered.csv prov:wasGeneratedBy urn:uuid:...fb7494036
-## 6      new_mtcars_g.png prov:wasGeneratedBy urn:uuid:...fb7494036
-## 7 urn:uuid:...fb7494036           prov:used https://c...tcars.csv
-## 8 urn:uuid:...fb7494036           prov:used https://c...c62d8d439
+##                   subject           predicate                               object
+## 3        new_mtcars_g.png prov:wasGeneratedBy                       new_analysis.R
+## 6 new_mtcars_gathered.csv prov:wasGeneratedBy                       new_analysis.R
+## 7          new_analysis.R           prov:used https://cn-stage...ac64-c6bc62d8d439
+## 8          new_analysis.R           prov:used https://cn-stage...9992-15052b20f755
 ```
 -->
 </div>

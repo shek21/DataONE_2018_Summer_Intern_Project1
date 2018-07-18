@@ -105,9 +105,16 @@ if(length(progFiles) > 0) {
       sid <- selectMember(dp, name="sysmeta@fileName", value=as.character(vrUsed$names[n]))
       sids <- c(sids, sid)
       
-      # add connection as relationships into Bob's package
-      sids <- c(sids, origPkg@resmapId)
-      sids <- c(sids, as.character(vrUsed$names[n]))
+      # add a connection to Alice's package as a relationship into Bob's package
+      # information of the original package that the source data belongs to
+      if(!is.element(origPkg@resmapId, sids)) {
+        sids <- c(sids, origPkg@resmapId) 
+      }
+      
+      # information of the object in the original package that the Bob's analysis used
+      sid <- selectMember(origPkg, name="sysmeta@fileName", value=as.character(vrUsed$names[n]))
+      sids <- c(sids, sid)
+      #sids <- c(sids, as.character(vrUsed$names[n]))
     }
     
     # capture ids for outputs (those files derived)
@@ -138,11 +145,13 @@ if(length(progFiles) > 0) {
 ### Retrieve during transparancy 
 ##### Download package from DataONE
 ```{r}
-fullProvPkg <- getDataPackage(d1c, identifier = "urn:uuid:24da8564-faaf-4984-80f8-655c186e220e", lazyLoad=TRUE, limit="0MB", quiet=FALSE)
+fullProvPkg <- getDataPackage(d1c, identifier = "urn:uuid:7255080f-86e5-422a-8360-117cf80b6f0b", lazyLoad=TRUE, limit="0MB", quiet=FALSE)
 ```
 
 ##### Get provenance relationships
 ```{r}
+saveWidth <- getOption("width")
+options(width=120)
 relFullProv <- getRelationships(fullProvPkg, condense=T)
 prov <- subset(relFullProv, predicate=="prov:used" | predicate =="prov:wasDerivedFrom" | predicate=="prov:wasGeneratedBy")
 ```

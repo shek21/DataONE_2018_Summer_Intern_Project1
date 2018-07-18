@@ -11,8 +11,8 @@ contact <- new("contact",
                individualName = slee@individualName, 
                electronicMail = slee@electronicMailAddress, 
                organizationName = "IIT", phone="000-000-0000")
-pubDate <- "2018-07-10"
-title <- "test storing provenance into resmap"
+pubDate <- "2018-07-13"
+title <- "test2 storing provenance into resmap"
 abstract <- "test abs"
 
 dataset <- new("dataset", 
