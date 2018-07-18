@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packageId="568db564-335b-4355-a2b8-3bbfaa167f29" system="uuid" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 eml.xsd">
+<eml:eml xmlns:eml="eml://ecoinformatics.org/eml-2.1.1" xmlns:stmml="http://www.xml-cml.org/schema/stmml-1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" packageId="f2d5528d-5e78-4215-8a38-b7f89c928a7f" system="uuid" xsi:schemaLocation="eml://ecoinformatics.org/eml-2.1.1 eml.xsd">
   <dataset>
     <title>Bundling test for EVOS GoA</title>
     <creator>
@@ -41,7 +41,7 @@
       <phone>000-000-0000</phone>
       <electronicMailAddress>slee195@hawk.iit.edu</electronicMailAddress>
     </contact>
-    <otherEntity id="urn:uuid:e7a7ec32-cfec-4130-974a-458e7a66ec82" scope="document">
+    <otherEntity id="urn:uuid:ca242cf1-80ee-4868-bf6c-1e75632d988d" scope="document">
       <entityName>Alkane.csv</entityName>
       <physical scope="document">
         <objectName>Alkane.csv</objectName>
@@ -54,13 +54,13 @@
         </dataFormat>
         <distribution scope="document">
           <online>
-            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:e7a7ec32-cfec-4130-974a-458e7a66ec82</url>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:ca242cf1-80ee-4868-bf6c-1e75632d988d</url>
           </online>
         </distribution>
       </physical>
       <entityType>Other</entityType>
     </otherEntity>
-    <otherEntity id="urn:uuid:4d5e268d-7558-45f0-9d5a-865371933f4a" scope="document">
+    <otherEntity id="urn:uuid:f491c839-5c83-44ef-be2d-0c755c42969d" scope="document">
       <entityName>new_hcdbSites.R</entityName>
       <physical scope="document">
         <objectName>new_hcdbSites.R</objectName>
@@ -73,13 +73,13 @@
         </dataFormat>
         <distribution scope="document">
           <online>
-            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:4d5e268d-7558-45f0-9d5a-865371933f4a</url>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:f491c839-5c83-44ef-be2d-0c755c42969d</url>
           </online>
         </distribution>
       </physical>
       <entityType>Other</entityType>
     </otherEntity>
-    <otherEntity id="urn:uuid:dccd1206-8281-4825-baf7-0f62d4f35083" scope="document">
+    <otherEntity id="urn:uuid:1b32c360-adfa-4458-9530-856978ee172a" scope="document">
       <entityName>new_Total_PAH_and_Alkanes_GoA_Hydrocarbons_Clean.R</entityName>
       <physical scope="document">
         <objectName>new_Total_PAH_and_Alkanes_GoA_Hydrocarbons_Clean.R</objectName>
@@ -92,13 +92,13 @@
         </dataFormat>
         <distribution scope="document">
           <online>
-            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:dccd1206-8281-4825-baf7-0f62d4f35083</url>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:1b32c360-adfa-4458-9530-856978ee172a</url>
           </online>
         </distribution>
       </physical>
       <entityType>Other</entityType>
     </otherEntity>
-    <otherEntity id="urn:uuid:3e0f14c0-f270-459a-a880-105e808e0866" scope="document">
+    <otherEntity id="urn:uuid:511572bd-53b8-4583-a032-cf0f8a9014d4" scope="document">
       <entityName>Non-EVOS_SINs.csv</entityName>
       <physical scope="document">
         <objectName>Non-EVOS_SINs.csv</objectName>
@@ -111,13 +111,13 @@
         </dataFormat>
         <distribution scope="document">
           <online>
-            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:3e0f14c0-f270-459a-a880-105e808e0866</url>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:511572bd-53b8-4583-a032-cf0f8a9014d4</url>
           </online>
         </distribution>
       </physical>
       <entityType>Other</entityType>
     </otherEntity>
-    <otherEntity id="urn:uuid:a353a08f-dabd-4c1d-8856-7ce207d65ef2" scope="document">
+    <otherEntity id="urn:uuid:bcefbd93-ee4c-44ad-8758-be50c7c024c3" scope="document">
       <entityName>PAH.csv</entityName>
       <physical scope="document">
         <objectName>PAH.csv</objectName>
@@ -130,13 +130,13 @@
         </dataFormat>
         <distribution scope="document">
           <online>
-            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:a353a08f-dabd-4c1d-8856-7ce207d65ef2</url>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:bcefbd93-ee4c-44ad-8758-be50c7c024c3</url>
           </online>
         </distribution>
       </physical>
       <entityType>Other</entityType>
     </otherEntity>
-    <otherEntity id="urn:uuid:3045ebc1-8986-4abb-925c-fe3217cfe478" scope="document">
+    <otherEntity id="urn:uuid:5ee4e3cb-b1cb-43bb-a103-e2e5fcfabbdc" scope="document">
       <entityName>rp_hcdbSampleLocs.png</entityName>
       <physical scope="document">
         <objectName>rp_hcdbSampleLocs.png</objectName>
@@ -149,13 +149,13 @@
         </dataFormat>
         <distribution scope="document">
           <online>
-            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:3045ebc1-8986-4abb-925c-fe3217cfe478</url>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:5ee4e3cb-b1cb-43bb-a103-e2e5fcfabbdc</url>
           </online>
         </distribution>
       </physical>
       <entityType>Other</entityType>
     </otherEntity>
-    <otherEntity id="urn:uuid:1e920c89-9b06-4654-9073-bb1b1d3b0059" scope="document">
+    <otherEntity id="urn:uuid:db8729ad-5a51-4e71-8970-7d28b4ec6e9a" scope="document">
       <entityName>rp_hcdbSamplesGOA.png</entityName>
       <physical scope="document">
         <objectName>rp_hcdbSamplesGOA.png</objectName>
@@ -168,13 +168,13 @@
         </dataFormat>
         <distribution scope="document">
           <online>
-            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:1e920c89-9b06-4654-9073-bb1b1d3b0059</url>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:db8729ad-5a51-4e71-8970-7d28b4ec6e9a</url>
           </online>
         </distribution>
       </physical>
       <entityType>Other</entityType>
     </otherEntity>
-    <otherEntity id="urn:uuid:cf02115f-2db2-4e02-b40b-7a4811595954" scope="document">
+    <otherEntity id="urn:uuid:9aad3f5b-973d-4a3f-adb3-597f7f0790b4" scope="document">
       <entityName>rp_Total_Aromatic_Alkanes_PWS.csv</entityName>
       <physical scope="document">
         <objectName>rp_Total_Aromatic_Alkanes_PWS.csv</objectName>
@@ -187,13 +187,13 @@
         </dataFormat>
         <distribution scope="document">
           <online>
-            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:cf02115f-2db2-4e02-b40b-7a4811595954</url>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:9aad3f5b-973d-4a3f-adb3-597f7f0790b4</url>
           </online>
         </distribution>
       </physical>
       <entityType>Other</entityType>
     </otherEntity>
-    <otherEntity id="urn:uuid:9aea17e4-886f-4b8e-95b8-cb9cdb5100d6" scope="document">
+    <otherEntity id="urn:uuid:cd2e472d-cba0-4312-9ef1-027fbb52aae0" scope="document">
       <entityName>Sample.csv</entityName>
       <physical scope="document">
         <objectName>Sample.csv</objectName>
@@ -206,7 +206,7 @@
         </dataFormat>
         <distribution scope="document">
           <online>
-            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:9aea17e4-886f-4b8e-95b8-cb9cdb5100d6</url>
+            <url function="download">https://cn.dataone.org/cn/v2/resolve/urn:uuid:cd2e472d-cba0-4312-9ef1-027fbb52aae0</url>
           </online>
         </distribution>
       </physical>

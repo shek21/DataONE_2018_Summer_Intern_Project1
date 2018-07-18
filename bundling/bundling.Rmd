@@ -40,7 +40,10 @@ dataset <- new("dataset",
 eml <- new("eml", system="uuid", dataset=dataset)
 
 # write it into a file
-write_eml(eml, "./meta.xml")
+if(!is.null(coverage) & !is.null(person) & !is.null(slee) & !is.null(contact)
+   & pubDate != '' & title != '' & abstract != '' & !is.null(dataset)) {
+  write_eml(eml, "./meta.xml")  
+}
 
 # check the written metadata file is valid
 eml_validate("./meta.xml")
