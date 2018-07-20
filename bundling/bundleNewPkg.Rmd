@@ -1,0 +1,231 @@
+---
+title: "Bundling new data package with provenance and publishing to DataONE"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = "/Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/bundling/new")
+```
+
+### Create a new package (assume that new products have created)
+##### Create metadata in eml
+```{r}
+library(EML)
+
+# create metadata information
+coverage <- set_coverage(beginDate="2018-07-03", endDate="2018-07-20", 
+                         geographicDescription="Chicago", 
+                         west=-87.623177, east=-87.623177, 
+                         north=41.881832, south=41.881832)
+person <- as.person("Seokki Lee <slee195@hawk.iit.edu> [cre]")
+slee <- as(person, "creator")
+contact <- new("contact", 
+               individualName = slee@individualName, 
+               electronicMail = slee@electronicMailAddress, 
+               organizationName = "IIT", phone="000-000-0000")
+pubDate <- "2018-07-03"
+title <- "Bundling test for EVOS GoA"
+abstract <- "test abs"
+
+dataset <- new("dataset", 
+               title=title, 
+               creator=slee, 
+               pubDate=pubDate, 
+               abstract=abstract, 
+               coverage=coverage, 
+               contact=contact)
+eml <- new("eml", system="uuid", dataset=dataset)
+
+# write it into a file
+if(!is.null(coverage) & !is.null(person) & !is.null(slee) & !is.null(contact)
+   & pubDate != '' & title != '' & abstract != '' & !is.null(dataset)) {
+  write_eml(eml, "./meta.xml")  
+}
+
+# check the written metadata file is valid
+eml_validate("./meta.xml")
+
+eml
+```
+
+
+##### Create a package with newly generated objects
++ Create a package
+```{r}
+library(dataone)
+library(datapack)
+#devtools::install_github("nceas/arcticdatautils")
+library(arcticdatautils)
+
+dp <- new("DataPackage")
+```
+
++ Add metadata into the package
+```{r}
+metadataObj <- new("DataObject", format="eml://ecoinformatics.org/eml-2.1.1", filename="./meta.xml")
+dp <- addMember(dp, metadataObj)
+dp
+```
+
++ Add objects into the package
+```{r}
+# collect lists of files except metadata file
+flists <- grep(list.files("."), pattern="\\.xml$", inv=T, value=T)
+flists <- grep(flists, pattern="\\.zip$", inv=T, value=T)
+
+# filter out directory names
+flists <- setdiff(flists, list.dirs(recursive = FALSE, full.names = FALSE))
+
+for(o in flists) { 
+  obj <- new("DataObject", format=guess_format_id(o), filename=paste("./",o,sep=""))
+  dp <- addMember(dp, obj, metadataObj)
+}
+
+dp
+```
+
++ Add "otherEntity" to the metadata
+```{r}
+pids <- NULL
+for(i in 1:length(flists)) {
+  pid <- selectMember(dp, name="sysmeta@fileName", value=flists[i])
+  pids <- c(pids, pid)
+  flists[i] <- paste("./", flists[i], sep="")
+}
+entity_df <- data.frame(type="otherEntity", path=flists, pid=pids, format_id=guess_format_id(flists), stringsAsFactors=FALSE)
+eml <- eml_add_entities(eml, entity_df)
+
+write_eml(eml, "./meta.xml")
+eml_validate("./meta.xml")
+eml
+```
+
++ Replace metadata file in the package
+```{r}
+dp <- replaceMember(dp, metadataObj, replacement="./meta.xml", formatId="eml://ecoinformatics.org/eml-2.1.1")
+dp
+```
+
+<!--
+```{r}
+# collect lists of files except metadata file
+#flists <- grep(list.files("./new/"), pattern="\\.xml$", inv=T, value=T)
+
+# collect the extensions from the list
+#for (i in 1:length(flists)) {
+#  types <- c(types,sub("([^.?]*)","",flists[i]))
+#}
+
+#for (type in unique(types)) {
+#  objs = list.files("./new/", pattern=paste("\\",type,"$",sep=""))
+  
+#  for(o in objs) { 
+#    obj <- new("DataObject", format="text/csv", filename=paste("./new",o,sep=""))
+#    dp <- addMember(dp, obj, metadataObj)
+#  }
+#}
+
+#dp
+```
+
+
++ add scripts into the package
+```{r}
+#progFiles = list.files("./new/", pattern="\\.R$")
+
+#for(i in progFiles) { 
+#  progObj <- new("DataObject", format="application/R", filename=i)
+#  dp <- addMember(dp, progObj, metadataObj)
+#}
+
+#dp
+```
+
++ add images into the package
+```{r}
+#outFiles = list.files("./new/", pattern="\\.png$")
+
+#for(i in outFiles) { 
+#  outObj <- new("DataObject", format="image/png", filename=i)
+#  dp <- addMember(dp, outObj, metadataObj)
+#}
+
+#dp
+```
+-->
+
+
+### Record provenance for the computational scripts
+##### Initialize recordr and collect the list of script files
+```{r}
+library(recordr)
+rc <- new("Recordr")
+progFiles <- list.files(".", pattern="\\.R$")
+progFiles
+```
+
+##### Capture provenance for each script
+```{r}
+for(i in progFiles) {
+  record(rc, paste("./",i,sep=""), tag=i)
+}
+```
+
+##### List the records
+```{r}
+listRuns(rc)
+```
+
+##### View each record in detail
+```{r}
+for(i in 1:length(progFiles)) {
+  viewRuns(rc, seq=i) 
+}
+```
+
+
+### Add the captured provenance into the package
++ Collect the file name and file access type (e.g., read or write)
++ Group the provenance information into two sets (i.e., used and derived)
++ For each file used/derived, collect their ids from the package created above (using "selectMember")
++ Generate and add the provenance relationship into the package (using "describeWorkflow")
+```{r}
+for(i in 1:length(progFiles)) {
+  # capture file names and access types
+  vr <- viewRuns(rc, seq=i)
+  vrdf <- setNames(data.frame(basename(vr$files$filePath), vr$files$access), c("names","access"))
+  vrUsed <- setNames(subset(vrdf, vrdf$access == "read"), c("names","acess"))
+  vrDerived <- setNames(subset(vrdf, vrdf$access == "write"), c("names","acess"))
+  
+  # capture ids for sources (those files used and read)
+  sids <- NULL
+  for(n in 1:length(vrUsed$names)) {
+    sid <- selectMember(dp, name="sysmeta@fileName", value=as.character(vrUsed$names[n]))
+    sids <- c(sids, sid)
+  }
+  
+  # capture ids for outputs (those files derived)
+  oids <- NULL
+  for(o in 1:length(vrDerived$names)) {
+    oid <- selectMember(dp, name="sysmeta@fileName", value=as.character(vrDerived$names[o]))
+    oids <- c(oids, oid)
+  }
+  
+  # capture id for program script
+  pid <- selectMember(dp, name="sysmeta@fileName", value=progFiles[i])
+  
+  # create provenance relationships
+  dp <- describeWorkflow(dp, sources=sids, program=pid, derivations=oids)
+}
+
+dp
+```
+
+### Publish the package to DataONE
+```{r}
+#d1c <- D1Client("STAGING", "urn:node:mnTestARCTIC")
+#pkgId <- uploadDataPackage(d1c, dp, public=TRUE, quiet=FALSE)
+```

@@ -1,0 +1,38 @@
+--- Total_PAH_and_Alkanes_GoA_Hydrocarbons_Clean.R	2018-07-05 20:43:59.000000000 -0500
++++ ../scripts/new_Total_PAH_and_Alkanes_GoA_Hydrocarbons_Clean.R	2018-07-10 16:51:28.000000000 -0500
+@@ -4,7 +4,7 @@
+ #####################################################
+ 
+ # Set your working directory (this should be changed to download from the repository later)
+-setwd("C:/Users/rblake/Documents/NCEAS/GoA Portfolio Effects WG/Hydrocarbon Data")
++#setwd("C:/Users/rblake/Documents/NCEAS/GoA Portfolio Effects WG/Hydrocarbon Data")
+ 
+ #############################
+ # Calculate Total Aromatics  
+@@ -42,7 +42,7 @@
+ 
+ #############################
+ # Adding in the Sample information 
+-SamIDs <- read.csv("sample.csv")
++SamIDs <- read.csv("Sample.csv")
+ #library(plyr)
+ Samples1 <- arrange(SamIDs, Sin)  ; head(Samples1) # arranges the rows by Sample ID 
+   
+@@ -73,7 +73,7 @@
+ TotalAromAlk4 <- TotalAromAlk3b[,!names(TotalAromAlk3b) %in% c("FundingSource")]
+ 
+ ### Remove NON-EVOSTC Samples (list confirmed by Mark Carls at NOAA Auk Bay Lab)
+-Non_EVOS <- read.csv("Non-EVOS SINs.csv") # read in the list of non_EVOS Sample ID numbers
++Non_EVOS <- read.csv("Non-EVOS_SINs.csv") # read in the list of non_EVOS Sample ID numbers
+ head(Non_EVOS) ; nrow(Non_EVOS)
+ 
+ TotalAromAlk5 <- TotalAromAlk4[!TotalAromAlk4$Sin %in% Non_EVOS$Sin,]
+@@ -94,7 +94,7 @@
+ 
+ #########################
+ # create new CSV data file  (this should be changed to upload to repository later)
+-write.csv(TotalAromAlk5, "C:/Users/rblake/Documents/NCEAS/GoA Portfolio Effects WG/Hydrocarbon Data/Total_Aromatic_Alkanes_PWS.csv", row.names=F)
++write.csv(TotalAromAlk5, "../../../rp_Total_Aromatic_Alkanes_PWS.csv", row.names=F)
+ 
+ 
+ 
