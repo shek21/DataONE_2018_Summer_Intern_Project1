@@ -13,8 +13,6 @@ knitr::opts_knit$set(root.dir = "/Users/eunjungpark/Documents/dataone/DataONE_20
 ### Bundle a tale
 #### Load libraries needed
 ```{r}
-setwd("/Users/eunjungpark/Documents/dataone/DataONE_2018_Summer_Intern_Project1/taleForBundleTale/work/data/")
-
 # create a package
 library(dataone)
 library(datapack)
